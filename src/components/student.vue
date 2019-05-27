@@ -102,7 +102,7 @@
                             <Row style="margin-bottom:18px;margin-top:18px;">
                                 <Col span="6" offset="2">学号：</Col>
                                 <Col span="12">
-                                    <Input v-model="editForm.num" placeholder="请输入您的编号" style="width: 200px" />
+                                    <Input v-model="editForm.num" placeholder="请输入您的学号" style="width: 200px" />
                                 </Col>
                             </Row>
                             <Row style="margin-bottom:18px;">
@@ -114,43 +114,43 @@
                             <Row style="margin-bottom:18px;">
                                 <Col span="6" offset="2">专业：</Col>
                                 <Col span="12">
-                                    <Input v-model="editForm.major" placeholder="请输入手机号码" style="width: 200px" />
+                                    <Input v-model="editForm.major" placeholder="请输入您的专业" style="width: 200px" />
                                 </Col>
                             </Row>
                             <Row style="margin-bottom:18px;">
                                 <Col span="6" offset="2">年级：</Col>
                                 <Col span="12">
-                                    <Input v-model="editForm.rank" placeholder="请输入手机号码" style="width: 200px" />
+                                    <Input v-model="editForm.rank" placeholder="请输入您的年级" style="width: 200px" />
                                 </Col>
                             </Row>
                             <Row style="margin-bottom:18px;">
                                 <Col span="6" offset="2">国籍：</Col>
                                 <Col span="12">
-                                    <Input v-model="editForm.nation" placeholder="请输入手机号码" style="width: 200px" />
+                                    <Input v-model="editForm.nation" placeholder="请输入您的国籍" style="width: 200px" />
                                 </Col>
                             </Row>
                             <Row style="margin-bottom:24px;">
                                 <Col span="6" offset="2">实习城市：</Col>
                                 <Col span="12">
-                                    <Input v-model="editForm.city"  placeholder="请输入密码" style="width: 200px" />
+                                    <Input v-model="editForm.city"  placeholder="请输入实习城市" style="width: 200px" />
                                 </Col>
                             </Row>
                             <Row style="margin-bottom:24px;">
                                 <Col span="6" offset="2">实习医院：</Col>
                                 <Col span="12">
-                                    <Input v-model="editForm.hospital"  placeholder="请确认密码" style="width: 200px" />
+                                    <Input v-model="editForm.hospital"  placeholder="请输入实习医院" style="width: 200px" />
                                 </Col>
                             </Row>
                             <Row style="margin-bottom:24px;">
                                 <Col span="6" offset="2">手机号码：</Col>
                                 <Col span="12">
-                                    <Input v-model="editForm.phone"  placeholder="请确认密码" style="width: 200px" />
+                                    <Input v-model="editForm.phone"  placeholder="请输入手机号码" style="width: 200px" />
                                 </Col>
                             </Row>
                             <Row style="margin-bottom:24px;">
                                 <Col span="6" offset="2">电子邮箱：</Col>
                                 <Col span="12">
-                                    <Input v-model="editForm.email"  placeholder="请确认密码" style="width: 200px" />
+                                    <Input v-model="editForm.email"  placeholder="请输入电子邮箱" style="width: 200px" />
                                 </Col>
                             </Row>
                             <Row style="margin-bottom:24px;">
@@ -449,6 +449,8 @@
                         _this.data[_this.editIndex].hospital=_this.editForm.hospital
                         _this.data[_this.editIndex].phone=_this.editForm.phone
                         _this.data[_this.editIndex].email=_this.editForm.email
+                        _this.data[_this.editIndex].openId=_this.editForm.openId
+                        _this.data[_this.editIndex].password=_this.editForm.password
                         _this.$Message.success(res.body.msg)
                     }
                 },(res)=>{

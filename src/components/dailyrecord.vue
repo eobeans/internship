@@ -84,6 +84,9 @@
                             <Col span="3" offset="18">
                                 <Button type="primary" @click.native.prevent="handleAdd">新建每日实习情况</Button>
                             </Col>
+                            <Col span="3">
+                                <Input suffix="ios-search" placeholder="请输入学生学号搜索" style="width: auto" @click.native="search"  @keyup.enter.native="search" v-model="searchValue"/>
+                            </Col>
                         </row>
                         <Divider />
                         <Table border :loading="loading" size="small" :columns="columns" :data="data">
@@ -101,6 +104,7 @@
                             title="修改信息"
                             ok-text="保存"
                             cancel-text="取消"
+                            :scrollable="true"
                             @on-ok="ok"
                             @on-cancel="cancel">
                             <Row style="margin-bottom:18px;margin-top:18px;">
@@ -116,7 +120,9 @@
                             <Row style="margin-bottom:18px;">
                                 <Col span="3" offset="2" class="myCol">科室：</Col>
                                 <Col span="6">
-                                    <Input v-model="editForm.department" placeholder="请输入科室" style="width: 100px" @mouseleave.native="selectDep(editForm.department)" />
+                                    <Select v-model="editForm.department" @mouseleave.native="selectDep(editForm.department)" style="width:100px" placeholder="请选择科室">
+                                        <Option v-for="item in departmentList" :value="item" :key="item">{{ item }}</Option>
+                                    </Select>
                                 </Col>
                                 <Col span="3" offset="2"  class="myCol">日期：</Col>
                                 <Col span="6">
@@ -145,8 +151,8 @@
                                 <Col span="3" offset="2">检查：</Col>
                                 <Col span="17">
                                     <RadioGroup v-model="editForm.dcheck">
-                                        <Radio :label="1">已核对</Radio>
-                                        <Radio :label="0">未核对</Radio>
+                                        <Radio :label="1">考勤属实</Radio>
+                                        <Radio :label="0">考勤不属实</Radio>
                                     </RadioGroup>
                                 </Col>
                             </Row>
@@ -171,7 +177,7 @@
                             <Row style="margin-bottom:24px;">
                                 <Col span="3" offset="2" class="myCol">医学诊断：</Col>
                                 <Col span="12">
-                                    <Select v-model="editForm.diagnosis" @click.native="ifselectDep" style="width:200px">
+                                    <Select v-model="editForm.diagnosis" style="width:200px">
                                         <Option v-for="item in diagnosisList" :value="item" :key="item">{{ item }}</Option>
                                     </Select>
                                 </Col>
@@ -179,7 +185,7 @@
                             <Row style="margin-bottom:24px;">
                                 <Col span="3" offset="2" class="myCol">临床操作：</Col>
                                 <Col span="12">
-                                    <Select v-model="editForm.operation" @click.native="ifselectDep" style="width:200px">
+                                    <Select v-model="editForm.operation" style="width:200px">
                                         <Option v-for="item in operationList" :value="item" :key="item">{{ item }}</Option>
                                     </Select>
                                 </Col>
@@ -210,6 +216,7 @@
                             title="新建每日实习信息"
                             ok-text="新建"
                             cancel-text="取消"
+                            :scrollable="true"
                             @on-ok="okAdd"
                             @on-cancel="cancel">
                             <Row style="margin-bottom:18px;margin-top:18px;">
@@ -225,7 +232,9 @@
                             <Row style="margin-bottom:18px;">
                                 <Col span="3" offset="2" class="myCol">科室：</Col>
                                 <Col span="6">
-                                    <Input v-model="addForm.department" placeholder="请输入科室" style="width: 100px" @mouseleave.native="selectDep(addForm.department)" />
+                                    <Select v-model="addForm.department" @mouseleave.native="selectDep(addForm.department)" style="width:100px" placeholder="请选择科室">
+                                        <Option v-for="item in departmentList" :value="item" :key="item">{{ item }}</Option>
+                                    </Select>
                                 </Col>
                                 <Col span="3" offset="2"  class="myCol">日期：</Col>
                                 <Col span="6">
@@ -254,8 +263,8 @@
                                 <Col span="3" offset="2">检查：</Col>
                                 <Col span="17">
                                     <RadioGroup v-model="addForm.dcheck">
-                                        <Radio :label="1">已核对</Radio>
-                                        <Radio :label="0">未核对</Radio>
+                                        <Radio :label="1">考勤属实</Radio>
+                                        <Radio :label="0">考勤不属实</Radio>
                                     </RadioGroup>
                                 </Col>
                             </Row>
@@ -280,7 +289,7 @@
                             <Row style="margin-bottom:24px;">
                                 <Col span="3" offset="2" class="myCol">医学诊断：</Col>
                                 <Col span="12">
-                                    <Select v-model="addForm.diagnosis" @click.native="ifselectDep" style="width:200px">
+                                    <Select v-model="addForm.diagnosis" style="width:200px">
                                         <Option v-for="item in diagnosisList" :value="item" :key="item">{{ item }}</Option>
                                     </Select>
                                 </Col>
@@ -288,7 +297,7 @@
                             <Row style="margin-bottom:24px;">
                                 <Col span="3" offset="2" class="myCol">临床操作：</Col>
                                 <Col span="12">
-                                    <Select v-model="addForm.operation" @click.native="ifselectDep" style="width:200px">
+                                    <Select v-model="addForm.operation" style="width:200px">
                                         <Option v-for="item in operationList" :value="item" :key="item">{{ item }}</Option>
                                     </Select>
                                 </Col>
@@ -336,7 +345,7 @@
                             <Row style="margin-bottom:18px;">
                                 <Col span="3" offset="2" class="myCol1">检查：</Col>
                                 <Col span="17">
-                                    <p>{{(showForm.dcheck==1?'已审核':'未审核')}}</p>
+                                    <p>{{(showForm.dcheck==1?'考勤属实':'考勤不属实')}}</p>
                                 </Col>
                             </Row>
                             <Row style="margin-bottom:18px;margin-top:18px;">
@@ -383,6 +392,7 @@
 <script>
     import setting from '../setting'
     import moment from '../../node_modules/moment'
+import { constants } from 'fs';
 
     export default {
         data(){
@@ -458,6 +468,11 @@
                     operation:'',
                     activity:'',
                 },
+                editStatus:{
+                    oriNum:'',
+                    oriDate:'',
+                    ifStatus:0,
+                },
                 addForm:{
                     id:'',
                     medId:'',
@@ -484,15 +499,19 @@
                 diagnosisList:[],
                 operationList:[],
                 activityList:[],
+                departmentList:[],
                 deleteId:{
                     id:'',
-                    medId:''
+                    medId:'',
+                    num:'',
+                    date:''
                 },
                 deleteIndex:-1,
                 total:0,
                 myoffset:0,
                 addDepartment:'',
                 editDepartment:'',
+                searchValue:'',
             }
         },
         mounted(){
@@ -514,6 +533,14 @@
                         _this.loading=false
                     }else{
                         _this.$Message.error("没有每日实习数据")
+                    }
+                })
+                let url3=setting.url+"getDepartment.json"
+                this.$http.get(url3).then(res=>{
+                    if(res.body.code==0){
+                        this.departmentList=res.body.departmentList
+                    }else{
+                        this.$Message.error("科室查找出错")
                     }
                 })
             }else{
@@ -567,15 +594,17 @@
             },
             handleEdit (row, index) {
                 this.modal1=true
+                this.editStatus.oriNum=row.num
+                this.editStatus.oriDate=row.date
+                this.ifStatus=0
                 if(this.editForm.department!=row.department){
-                    let _this=this
                     let url12=setting.url+"getList.json"
                     this.$http.post(url12,{department:row.department}).then(res=>{
                         if(res.body.code==0){
-                            _this.$Message.info('loading......')
-                            _this.editDepartment=_this.editForm.department
-                            _this.diagnosisList=res.body.diagnosisList
-                            _this.operationList=res.body.operationList
+                            this.$Message.info('loading......')
+                            this.editDepartment=this.editForm.department
+                            this.diagnosisList=res.body.diagnosisList
+                            this.operationList=res.body.operationList
                             this.editIndex = index
                             let _obj = JSON.stringify(row)
                             let objClone = JSON.parse(_obj)
@@ -592,6 +621,8 @@
             handleDelete(row,index){
                 this.deleteId.id=row.id
                 this.deleteId.medId=row.medId
+                this.deleteId.num=row.num
+                this.deleteId.date=row.date
                 this.deleteIndex=index
                 this.modal2=true
             },
@@ -602,6 +633,7 @@
             },
             okDelete(){
                 let url2=setting.url+"deleteDailyRecord.json"
+                this.deleteId.date=moment(this.deleteId.date).utcOffset(8).format("YYYY-MM-DD")
                 this.$http.post(url2,{deleteId:this.deleteId}).then((res)=>{
                     if(res.body.code == 0){
                         this.data.splice(this.deleteIndex,1)
@@ -613,6 +645,12 @@
             },
             okAdd(){
                 let _this=this
+                this.addForm.sick=0
+                this.addForm.ontime=0
+                this.addForm.absence=0
+                this.addForm.dleave=0
+                this.addForm.truancy=0
+                this.addForm.late=0
                 for(let i=0;i<_this.addForm.attendence.length;i++){
                     if(_this.addForm.attendence[i]=="按时"){
                         _this.addForm.ontime=1
@@ -633,7 +671,7 @@
                         _this.addForm.sick=1
                     }
                     if(_this.addForm.attendence[i]=="病假半天"){
-                        _this.addForm.ontime=0.5
+                        _this.addForm.sick=0.5
                     }
                     if(_this.addForm.attendence[i]=="事假一天"){
                         _this.addForm.absence=1
@@ -652,7 +690,7 @@
                 let url2=setting.url+"addDailyRecord.json"
                 _this.$http.post(url2,{addForm:_this.addForm}).then((res)=>{
                     if(res.body.code == 0){
-                        _this.data.unshift(res.body.data)
+                        _this.data.push(res.body.data)
                         _this.$Message.success(res.body.msg)
                     }
                 },(res)=>{
@@ -660,54 +698,53 @@
                 })
             },
             ok () {
-                let _this=this
                 this.editForm.sick=0
                 this.editForm.ontime=0
                 this.editForm.absence=0
                 this.editForm.dleave=0
                 this.editForm.truancy=0
                 this.editForm.late=0
-                for(let i=0;i<_this.editForm.attendence.length;i++){
-                    if(_this.editForm.attendence[i]=="按时"){
-                        _this.editForm.ontime=1
+                for(let i=0;i<this.editForm.attendence.length;i++){
+                    if(this.editForm.attendence[i]=="按时"){
+                        this.editForm.ontime=1
                     }
-                    if(_this.editForm.attendence[i]=="迟到一次"){
-                        _this.editForm.late=1
+                    if(this.editForm.attendence[i]=="迟到一次"){
+                        this.editForm.late=1
                     }
-                    if(_this.editForm.attendence[i]=="迟到两次"){
-                        _this.editForm.late=2
+                    if(this.editForm.attendence[i]=="迟到两次"){
+                        this.editForm.late=2
                     }
-                    if(_this.editForm.attendence[i]=="早退一次"){
-                        _this.editForm.dleave=1
+                    if(this.editForm.attendence[i]=="早退一次"){
+                        this.editForm.dleave=1
                     }
-                    if(_this.editForm.attendence[i]=="早退两次"){
-                        _this.editForm.dleave=2
+                    if(this.editForm.attendence[i]=="早退两次"){
+                        this.editForm.dleave=2
                     }
-                    if(_this.editForm.attendence[i]=="病假一天"){
-                        _this.editForm.sick=1
+                    if(this.editForm.attendence[i]=="病假一天"){
+                        this.editForm.sick=1
                     }
-                    if(_this.editForm.attendence[i]=="病假半天"){
-                        _this.editForm.ontime=0.5
+                    if(this.editForm.attendence[i]=="病假半天"){
+                        this.editForm.sick=0.5
                     }
-                    if(_this.editForm.attendence[i]=="事假一天"){
-                        _this.editForm.absence=1
+                    if(this.editForm.attendence[i]=="事假一天"){
+                        this.editForm.absence=1
                     }
-                    if(_this.editForm.attendence[i]=="事假半天"){
-                        _this.editForm.absence=0.5
+                    if(this.editForm.attendence[i]=="事假半天"){
+                        this.editForm.absence=0.5
                     }
-                    if(_this.editForm.attendence[i]=="旷课一天"){
-                        _this.editForm.truancy=1
+                    if(this.editForm.attendence[i]=="旷课一天"){
+                        this.editForm.truancy=1
                     }
-                    if(_this.editForm.attendence[i]=="旷课半天"){
-                        _this.editForm.truancy=0.5
+                    if(this.editForm.attendence[i]=="旷课半天"){
+                        this.editForm.truancy=0.5
                     }
                 }
-                _this.editForm.date=moment(_this.editForm.date).utcOffset(8).format("YYYY-MM-DD")
+                this.editForm.date=moment(this.editForm.date).utcOffset(8).format("YYYY-MM-DD")
                 let url3=setting.url+"alterDailyRecord.json"
-                _this.$http.post(url3,{editForm:_this.editForm}).then((res)=>{
+                this.$http.post(url3,{editForm:this.editForm}).then((res)=>{
                     if(res.body.code == 0){
-                        _this.deepClone(_this.editForm,_this.data[_this.editIndex])
-                        _this.$Message.success(res.body.msg)
+                        this.deepClone(this.editForm,this.data[this.editIndex])
+                        this.$Message.success(res.body.msg)
                     }
                 },(res)=>{
                     console.log('信息更改出错，请重试')
@@ -738,16 +775,31 @@
                     targetObj[key] = sourceObj[key]
                 }
             },
-            ifselectDep(){
-                if(this.modal1==true&&this.addForm.department!=''){
-                    this.selectDep(this.addForm.department)
-                }else if(this.addForm.department==''){
-                    _this.$Message.error("请先输入科室")
-                }
-                if(this.modal3==true&&this.editForm.department!=''){
-                    this.selectDep(this.editForm.department)
-                }else if(this.editForm.department==''){
-                    _this.$Message.error("请先输入科室")
+            search(){
+                if(this.searchValue===''){
+                    this.myoffset=0
+                    let url12=setting.url+"getDailyRecord.json"
+                    this.$http.post(url12,{myoffset:this.myoffset}).then(res=>{
+                        if(res.body.code==0){
+                            this.data=res.body.data
+                            this.loading=false
+                        }else{
+                            this.$Message.error("没有每日实习数据")
+                        }
+                    })
+                }else{
+                    if(/^[0-9]+$/.test(this.searchValue)){
+                        let url12=setting.url+"getDailyRecordByNum.json"
+                        this.$http.post(url12,{num:this.searchValue}).then(res=>{
+                            if(res.body.code==0){
+                                this.data=res.body.data
+                            }else{
+                                this.$Message.error("没有每日实习数据")
+                            }
+                        })
+                    }else{
+                        this.$Message.error("您的学号格式有误")
+                    }
                 }
             },
             selectDep(myDepartment){

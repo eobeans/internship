@@ -116,19 +116,16 @@ export default {
     },
     methods:{
         handleLogin() {
-            let _this = this
             let url1=setting.url+"postUser.json"
-            this.$http.post(url1,{loginForm:_this.loginForm}).then((res)=>{
+            this.$http.post(url1,{loginForm:this.loginForm}).then((res)=>{
                 if(res.body.code == 0){
-                    // alert(res.body.teaNum) 123
-                    // this.$store.state.User.teaNum
                     this.$store.commit('setUser',res.body.teaNum)
                     this.$router.push('/attendence')
                 }else{
-                    _this.$Message.error('账号或密码错误！')
+                    this.$Message.error('账号或密码错误！')
                 }
             },(res)=>{
-                _this.$Message.error('出错误了！')
+                this.$Message.error('出错误了！')
             })
         },
         register(){
