@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-01 23:12:26
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-03 22:40:46
+ * @LastEditTime: 2021-06-03 23:17:41
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -11,7 +11,7 @@
 		<Layout>
 			<Layout :style="{padding: '0 12px 12px'}">
 					<Content :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
-							<div style="width:80%;height:400px">
+							<div style="height:400px">
 									<!-- <v-chart id="myPieChart" :options="pie"/> -->
 									<dev-line-chart
 										ref="zzqxtChart"
@@ -19,9 +19,9 @@
 										:is-finished.sync="zzqxtFinished"
 										:height="400"
 										:data="barLineChartData"
-										:lineDataName="['2020','2021']"
 										:chartOpt="{}"
-										showLegend>
+										showLegend
+									>
 									</dev-line-chart>
 							</div>
 						</Content>

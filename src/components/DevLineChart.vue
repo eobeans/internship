@@ -2,12 +2,14 @@
  * @Autor: eobeans
  * @Date: 2021-06-01 23:04:02
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-03 22:36:54
+ * @LastEditTime: 2021-06-03 23:26:13
  * @Version: 0.1.0
  * @Description: 
 -->
 <template>
-  <div :style="{width: width ? width + 'px' : '100%',height: height ? height + 'px' : '100%'}" ref="chartWrapper"><div style="width:100%;height:100%;" ref="vueChart">{{data}}</div></div>
+  <div :style="{width: width ? width + 'px' : '100%',height: height ? height + 'px' : '100%'}" ref="chartWrapper">
+    <div style="width:100%;height:100%;" ref="vueChart">{{data}}</div>
+  </div>
 </template>
 
 <script>
@@ -19,7 +21,13 @@ export default {
       type: Boolean,
       default: false
     },
-    width: Number,
+    width: {
+      type: Number,
+      require: false,
+      default: () => {
+        return null
+      }
+    },
     height: Number,
     labelLine: Number,
     title: String,
@@ -44,29 +52,13 @@ export default {
         return [] // [{name:'柱状分类名称',data:[{value: 100, name: 'x轴名称'}]]
       }
     },
-    lineDataName: {
-      required: false,
-      type: Array,
-      default: function () {
-        return [] // ['折线数据名称']
-      }
-    },
-    horizontal: {
-      required: false,
-      type: Boolean,
-      default: false
-    }, 
     showLegend: {
       required: false,
       type: Boolean,
       default: false
     },
-    barMax: Number,
-    barMin: Number,
     lineMax: Number,
-    lineMin: Number,
-    barYAxis: String,
-    LineYAxis: String
+    lineMin: Number
   },
   data () {
     return {
@@ -100,7 +92,7 @@ export default {
           },
           feature: {
             saveAsImage: {
-              title: 'img'
+              title: '下载'
             }
           }
         },
@@ -141,79 +133,42 @@ export default {
             }
           }
         },
-        yAxis: [
-          {
-            type: 'value',
-            min: that.barMin,
-            max: that.barMax,
-            axisLine: {
-              lineStyle: {
-                color: '#ccc'
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false
-            },
-            axisLabel: {
-              color: '#000',
-              verticalAlign: 'bottom'
+        yAxis:{
+          type: 'value',
+          min: that.lineMin,
+          max: that.lineMax,
+          axisLine: {
+            lineStyle: {
+              color: '#ccc'
             }
           },
-          {
-            type: 'value',
-            min: that.lineMin,
-            max: that.lineMax,
-            axisLine: {
-              lineStyle: {
-                color: '#ccc'
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              show: false
-            },
-            axisLabel: {
-              color: '#000',
-              formatter: (val) => {
-                if (val.length > 10) {
-                  return val.substring(0, 10) + '...';
-                } else {
-                  return val;
-                }
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          },
+          axisLabel: {
+            color: '#000',
+            formatter: (val) => {
+              if (val.length > 10) {
+                return val.substring(0, 10) + '...';
+              } else {
+                return val;
               }
             }
-          },
-        ],
+          }
+        },
         series: []
       }
-      let barSeriesOpt = this.deepMerge({
-        name: '',
-        data: [],
-        type: 'bar',
-        barGap: 0,
-        barWidth: that.data.length > 1 ? '16' : '32',
-        label: {
-          show: false,
-          position: that.horizontal ? 'right' : 'top',
-          color: '#000',
-          formatter: '{c}'
-        }
-      },this.seriesOpt)
       let lineSeriesOpt = {
         name: '',
         data: [],
         type: 'line',
-        yAxisIndex: 1,
+        yAxisIndex: 0,
         smooth: true
       }
       let sourceData = this.data;
-      let lineDataName = '/'+that.lineDataName.join('/')+'/';
-      console.log(lineDataName);
       sourceData.map(item => {
         defaultOpt.legend.data.push(item.name);
         let xAxis = [];
@@ -223,15 +178,9 @@ export default {
           seriesData.push(dataItem.value)
         })
         defaultOpt.xAxis.data = xAxis;
-        if(lineDataName.indexOf('/'+item.name+'/')>-1){
-          defaultOpt.series.push({...lineSeriesOpt,...{
-          name: item.name,
-          data: seriesData}})
-        }else {
-          defaultOpt.series.push({...barSeriesOpt,...{
-          name: item.name,
-          data: seriesData}})
-        }
+        defaultOpt.series.push({...lineSeriesOpt,...{
+        name: item.name,
+        data: seriesData}})
       })
       return this.deepMerge(defaultOpt,this.chartOpt);
     },
@@ -247,8 +196,8 @@ export default {
         toolbox: that.originChartOpt.toolbox,
         tooltip: that.originChartOpt.tooltip,
         grid: that.originChartOpt.grid,
-        xAxis: that.horizontal ? that.originChartOpt.yAxis : that.originChartOpt.xAxis,
-        yAxis: that.horizontal ? that.originChartOpt.xAxis : that.originChartOpt.yAxis,
+        xAxis: that.originChartOpt.xAxis,
+        yAxis: that.originChartOpt.yAxis,
         series: that.originChartOpt.series
       }
       return obj;
@@ -259,7 +208,9 @@ export default {
       let dom = this.$refs.vueChart;
       this.vueChart = echarts.init(dom);
       this.vueChart.setOption(this.opt);
-      this.$refs.chartWrapper.addEventListener('resize', this.vueChart.resize);
+      this.$refs.chartWrapper.addEventListener('resize', () => {
+        this.vueChart.resize()
+      });
       let that = this;
       this.vueChart.on('finished', function () {
         that.$emit('update:isFinished', true);
@@ -309,7 +260,10 @@ export default {
   },
   beforeDestroy () {
     this.$emit('update:isFinished', false);
-    this.$refs.chartWrapper.removeEventListener('resize', this.vueChart.resize);
+    // this.$refs.chartWrapper.removeEventListener('resize', this.vueChart.resize());
+    this.$refs.chartWrapper.removeEventListener('resize', () => {
+      this.vueChart.resize()
+    });
   }
 }
 </script>
