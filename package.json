@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "echarts": "^4.1.0",
+    "element-ui": "^2.15.2",
     "iview": "^3.2.2",
     "moment": "^2.24.0",
     "vue": "^2.5.2",
@@ -41,6 +42,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
+    "element-theme-chalk": "^2.15.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
