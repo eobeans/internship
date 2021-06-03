@@ -1,20 +1,20 @@
+<!--
+ * @Autor: eobeans
+ * @Date: 2021-05-27 22:42:25
+ * @LastEditors: eobeans
+ * @LastEditTime: 2021-06-03 14:31:07
+ * @Version: 0.1.0
+ * @Description: 
+-->
 <template>
   <div id="app">
-    <MyHeader></MyHeader>
-    <router-view/>
-    <MyFooter></MyFooter>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import MyHeader from '@/components/header'
-import MyFooter from '@/components/footer'
 export default {
   name: 'App',
-  components: {
-    MyHeader,
-    MyFooter,
-  },
 }
 </script>
 
