@@ -1,39 +1,7 @@
-<style scoped>
-.layout{
-    border: 1px solid #d7dde4;
-    background: #f5f7f9;
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-}
-.layout-logo{
-    width: 100px;
-    height: 30px;
-    background: #5b6270;
-    border-radius: 3px;
-    float: left;
-    position: relative;
-    top: 15px;
-    left: 20px;
-}
-.layout-nav{
-    width: 420px;
-    margin: 0 auto;
-    margin-right: 20px;
-}
-.echarts {
-  width: 100%;
-  height: 100%;
-  z-index: 20;
-}
-.myCol{
-  margin-top: 7px;
-}
-</style>
 <template>
     <div class="layout">
         <Layout>
-            <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" :style="{background: '#fff'}">
+            <!-- <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" :style="{background: '#fff'}">
                 <Menu active-name="1-3" theme="light" width="auto" :style="{ minHeight: minHeight + 'px'}">
                     <MenuItem name="1-1" @click.native="selectNav(1)">
                         <Icon type="ios-navigate"></Icon>
@@ -76,7 +44,7 @@
                         <span>学校教师账号管理</span>
                     </MenuItem>
                 </Menu>
-            </Sider>
+            </Sider> -->
             <Layout>
                 <Layout :style="{padding: '0 12px 12px'}">
                     <Content :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
@@ -391,7 +359,7 @@
 </template>
 <script>
     import setting from '../setting'
-    import moment from '../../node_modules/moment'
+    import moment from 'moment'
 import { constants } from 'fs';
 
     export default {
@@ -515,38 +483,38 @@ import { constants } from 'fs';
             }
         },
         mounted(){
-            let _this=this
-            this.minHeight=document.body.clientHeight-210
-            if(this.$store.state.User.teaNum!=''){
-                let url1=setting.url+"getDailyRecordCount.json"
-                this.$http.get(url1).then(res=>{
-                    if(res.body.code==0){
-                        _this.total=parseInt(res.body.mycount)
-                    }else{
-                        _this.$Message.error("没有每日实习数据")
-                    }
-                })
-                let url12=setting.url+"getDailyRecord.json"
-                this.$http.post(url12,{myoffset:_this.myoffset}).then(res=>{
-                    if(res.body.code==0){
-                        _this.data=res.body.data
-                        _this.loading=false
-                    }else{
-                        _this.$Message.error("没有每日实习数据")
-                    }
-                })
-                let url3=setting.url+"getDepartment.json"
-                this.$http.get(url3).then(res=>{
-                    if(res.body.code==0){
-                        this.departmentList=res.body.departmentList
-                    }else{
-                        this.$Message.error("科室查找出错")
-                    }
-                })
-            }else{
-                this.$Message.error('请先登入！')
-                this.$router.push('/login')
-            }
+            // let _this=this
+            // this.minHeight=document.body.clientHeight-210
+            // if(this.$store.state.User.teaNum!=''){
+            //     let url1=setting.url+"getDailyRecordCount.json"
+            //     this.$http.get(url1).then(res=>{
+            //         if(res.body.code==0){
+            //             _this.total=parseInt(res.body.mycount)
+            //         }else{
+            //             _this.$Message.error("没有每日实习数据")
+            //         }
+            //     })
+            //     let url12=setting.url+"getDailyRecord.json"
+            //     this.$http.post(url12,{myoffset:_this.myoffset}).then(res=>{
+            //         if(res.body.code==0){
+            //             _this.data=res.body.data
+            //             _this.loading=false
+            //         }else{
+            //             _this.$Message.error("没有每日实习数据")
+            //         }
+            //     })
+            //     let url3=setting.url+"getDepartment.json"
+            //     this.$http.get(url3).then(res=>{
+            //         if(res.body.code==0){
+            //             this.departmentList=res.body.departmentList
+            //         }else{
+            //             this.$Message.error("科室查找出错")
+            //         }
+            //     })
+            // }else{
+            //     this.$Message.error('请先登入！')
+            //     this.$router.push('/login')
+            // }
         },
         methods:{
             selectNav(val){
@@ -831,3 +799,36 @@ import { constants } from 'fs';
         }
     }
 </script>
+<style scoped>
+.layout{
+    border: 1px solid #d7dde4;
+    background: #f5f7f9;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.layout-logo{
+    width: 100px;
+    height: 30px;
+    background: #5b6270;
+    border-radius: 3px;
+    float: left;
+    position: relative;
+    top: 15px;
+    left: 20px;
+}
+.layout-nav{
+    width: 420px;
+    margin: 0 auto;
+    margin-right: 20px;
+}
+.echarts {
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+}
+.myCol{
+  margin-top: 7px;
+}
+</style>
+

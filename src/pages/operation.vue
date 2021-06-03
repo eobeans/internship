@@ -1,83 +1,6 @@
-<style scoped>
-.layout{
-    border: 1px solid #d7dde4;
-    background: #f5f7f9;
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-}
-.layout-logo{
-    width: 100px;
-    height: 30px;
-    background: #5b6270;
-    border-radius: 3px;
-    float: left;
-    position: relative;
-    top: 15px;
-    left: 20px;
-}
-.layout-nav{
-    width: 420px;
-    margin: 0 auto;
-    margin-right: 20px;
-}
-.echarts {
-  width: 100%;
-  height: 100%;
-  z-index: 20;
-}
-.myCol{
-    margin-top: 4px;
-    font-size: 14px;
-}
-</style>
 <template>
     <div class="layout">
         <Layout>
-            <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" :style="{background: '#fff'}">
-                <Menu active-name="1-8" theme="light" width="auto" :style="{ minHeight: minHeight + 'px'}">
-                    <MenuItem name="1-1" @click.native="selectNav(1)">
-                        <Icon type="ios-navigate"></Icon>
-                        <span>考勤总览</span>
-                    </MenuItem>
-                    <MenuItem name="1-2" @click.native="selectNav(2)">
-                        <Icon type="ios-man" />
-                        <span>学生信息</span>
-                    </MenuItem>
-                    <MenuItem name="1-3" @click.native="selectNav(3)">
-                        <Icon type="ios-paper" />
-                        <span>每日实习情况</span>
-                    </MenuItem>
-                    <MenuItem name="1-4" @click.native="selectNav(4)">
-                        <Icon type="ios-loading" />
-                        <span>轮转科室情况</span>
-                    </MenuItem>
-                    <MenuItem name="1-5" @click.native="selectNav(5)">
-                        <Icon type="ios-flag" />
-                        <span>成绩考核记录</span>
-                    </MenuItem>
-                    <MenuItem name="1-6" @click.native="selectNav(6)">
-                        <Icon type="ios-create" />
-                        <span>诊断、操作记录</span>
-                    </MenuItem>
-                    <MenuItem name="1-7" @click.native="selectNav(7)">
-                        <Icon type="ios-pulse" />
-                        <span>病种记录表</span>
-                    </MenuItem>
-                    <MenuItem name="1-8" @click.native="selectNav(8)">
-                        <Icon type="ios-copy" />
-                        <span>操作记录表</span>
-                    </MenuItem>
-                    <MenuItem name="1-9" @click.native="selectNav(9)">
-                        <Icon type="ios-analytics" />
-                        <span>医院账号管理</span>
-                    </MenuItem>
-                    <MenuItem name="1-10" @click.native="selectNav(10)">
-                        <Icon type="ios-school" />
-                        <span>学校教师账号管理</span>
-                    </MenuItem>
-                </Menu>
-            </Sider>
             <Layout>
                 <Layout :style="{padding: '0 12px 12px'}">
                     <Content :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
@@ -173,8 +96,7 @@
 
     export default {
         data(){
-            return{    
-                minHeight:0,
+            return{
                 columns: [
                     {
                         title: '科室',
@@ -217,24 +139,7 @@
                 deleteIndex:-1,
             }
         },
-        mounted(){
-            let _this=this
-            this.minHeight=document.body.clientHeight-210
-            if(this.$store.state.User.teaNum!=''){
-                let url1=setting.url+"getDiffOperation.json"
-                this.$http.post(url1,{myoffset:this.myoffset}).then(res=>{
-                    if(res.body.code==0){
-                        _this.total=res.body.total
-                        _this.data=res.body.data
-                    }else{
-                        _this.$Message.error("出错误了！")
-                    }
-                })
-            }else{
-                this.$Message.error('请先登入！')
-                this.$router.push('/login')
-            }
-        },
+        mounted(){ },
         methods:{
             selectNav(val){
                 switch(val)

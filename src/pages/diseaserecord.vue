@@ -1,40 +1,7 @@
-<style scoped>
-.layout{
-    border: 1px solid #d7dde4;
-    background: #f5f7f9;
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-}
-.layout-logo{
-    width: 100px;
-    height: 30px;
-    background: #5b6270;
-    border-radius: 3px;
-    float: left;
-    position: relative;
-    top: 15px;
-    left: 20px;
-}
-.layout-nav{
-    width: 420px;
-    margin: 0 auto;
-    margin-right: 20px;
-}
-.echarts {
-  width: 100%;
-  height: 100%;
-  z-index: 20;
-}
-.myCol{
-    margin-top: 4px;
-    font-size: 14px;
-}
-</style>
 <template>
     <div class="layout">
         <Layout>
-            <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" :style="{background: '#fff'}">
+            <!-- <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" :style="{background: '#fff'}">
                 <Menu active-name="1-6" theme="light" width="auto" :style="{ minHeight: minHeight + 'px'}">
                     <MenuItem name="1-1" @click.native="selectNav(1)">
                         <Icon type="ios-navigate"></Icon>
@@ -77,7 +44,7 @@
                         <span>学校教师账号管理</span>
                     </MenuItem>
                 </Menu>
-            </Sider>
+            </Sider> -->
             <Layout>
                 <Layout :style="{padding: '0 12px 12px'}">
                     <Content :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
@@ -126,12 +93,11 @@
 </template>
 <script>
     import setting from '../setting'
-    import moment, { months } from '../../node_modules/moment'
+    import moment, { months } from 'moment'
 
     export default {
         data(){
-            return{    
-                minHeight:0,
+            return{
                 editIndex:-1,
                 modal1:false,
                 modal2:false,
@@ -194,24 +160,7 @@
                 myoffset:0,
             }
         },
-        mounted(){
-            let _this=this
-            this.minHeight=document.body.clientHeight-210
-            if(this.$store.state.User.teaNum!=''){
-                let url1=setting.url+"getMedrecord.json"
-                this.$http.post(url1,{myoffset:this.myoffset}).then(res=>{
-                    if(res.body.code==0){
-                        _this.total=res.body.total
-                        _this.data=res.body.data
-                    }else{
-                        _this.$Message.error("出错误了！")
-                    }
-                })
-            }else{
-                this.$Message.error('请先登入！')
-                this.$router.push('/login')
-            }
-        },
+        mounted(){},
         methods:{
             selectNav(val){
                 let _this=this
