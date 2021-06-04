@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-03 14:26:15
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-03 14:58:34
+ * @LastEditTime: 2021-06-05 01:15:45
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -10,12 +10,12 @@
   <div id="layout">
     <Layout>
       <MyHeader></MyHeader>
-      <Layout>
+      <div style="display:flex;">
         <MySider></MySider>
         <keep-alive>
           <router-view></router-view>
         </keep-alive>
-      </Layout>
+      </div>
       <MyFooter></MyFooter>
     </Layout>
   </div>
