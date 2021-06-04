@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-01 23:04:02
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-03 23:26:13
+ * @LastEditTime: 2021-06-05 01:53:02
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -208,7 +208,7 @@ export default {
       let dom = this.$refs.vueChart;
       this.vueChart = echarts.init(dom);
       this.vueChart.setOption(this.opt);
-      this.$refs.chartWrapper.addEventListener('resize', () => {
+      window.addEventListener('resize', () => {
         this.vueChart.resize()
       });
       let that = this;
@@ -261,7 +261,7 @@ export default {
   beforeDestroy () {
     this.$emit('update:isFinished', false);
     // this.$refs.chartWrapper.removeEventListener('resize', this.vueChart.resize());
-    this.$refs.chartWrapper.removeEventListener('resize', () => {
+    window.removeEventListener('resize', () => {
       this.vueChart.resize()
     });
   }
