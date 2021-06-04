@@ -2,54 +2,54 @@
  * @Autor: eobeans
  * @Date: 2021-06-03 13:29:27
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-05 01:06:24
+ * @LastEditTime: 2021-06-05 01:39:32
  * @Version: 0.1.0
  * @Description: 
 -->
 <template>
 <Sider ref="side" hide-trigger collapsible :collapsed-width="78" :style="{background: '#fff'}">
-	<Menu active-name="1-10" theme="light" width="auto" :style="{ minHeight: minHeight + 'px'}">
-		<MenuItem name="1-1" @click.native="selectNav(1)">
+	<Menu :active-name="activeName" theme="light" width="auto" :style="{ minHeight: minHeight + 'px'}">
+		<MenuItem name="attendence" @click.native="selectNav('attendence')">
 			<Icon type="ios-navigate"></Icon>
 			<span>考勤总览</span>
 		</MenuItem>
-		<MenuItem name="1-2" @click.native="selectNav(2)">
+		<MenuItem name="student" @click.native="selectNav('student')">
 			<Icon type="ios-man" />
 			<span>学生信息</span>
 		</MenuItem>
-		<MenuItem name="1-3" @click.native="selectNav(3)">
+		<MenuItem name="dailyRecord" @click.native="selectNav('dailyRecord')">
 			<Icon type="ios-paper" />
 			<span>每日实习情况</span>
 		</MenuItem>
-		<MenuItem name="1-4" @click.native="selectNav(4)">
+		<MenuItem name="totation" @click.native="selectNav('totation')">
 			<Icon type="ios-loading" />
 			<span>轮转科室情况</span>
 		</MenuItem>
-		<MenuItem name="1-5" @click.native="selectNav(5)">
+		<MenuItem name="grade" @click.native="selectNav('grade')">
 			<Icon type="ios-flag" />
 			<span>成绩考核记录</span>
 		</MenuItem>
-		<MenuItem name="1-6" @click.native="selectNav(6)">
+		<MenuItem name="diseaserecord" @click.native="selectNav('diseaserecord')">
 			<Icon type="ios-create" />
 			<span>诊断、操作记录</span>
 		</MenuItem>
-		<MenuItem name="1-7" @click.native="selectNav(7)">
+		<MenuItem name="disease" @click.native="selectNav('disease')">
 			<Icon type="ios-pulse" />
 			<span>病种记录表</span>
 		</MenuItem>
-		<MenuItem name="1-8" @click.native="selectNav(8)">
+		<MenuItem name="operation" @click.native="selectNav('operation')">
 			<Icon type="ios-copy" />
 			<span>操作记录表</span>
 		</MenuItem>
-		<MenuItem name="1-9" @click.native="selectNav(9)">
+		<MenuItem name="doctor" @click.native="selectNav('doctor')">
 			<Icon type="ios-analytics" />
 			<span>医院账号管理</span>
 		</MenuItem>
-		<MenuItem name="1-10" @click.native="selectNav(10)">
+		<MenuItem name="teacher" @click.native="selectNav('teacher')">
 			<Icon type="ios-school" />
 			<span>学校教师账号管理</span>
 		</MenuItem>
-		<MenuItem name="1-11" @click.native="selectNav(11)">
+		<MenuItem name="mytest" @click.native="selectNav('mytest')">
 			<Icon type="ios-school" />
 			<span>我的测试</span>
 		</MenuItem>
@@ -63,51 +63,16 @@ export default {
 	data(){
 		return{    
 			minHeight:0,
+			activeName: '1-1'
 		}
 	},
-	mounted(){},
+	mounted(){
+		// console.log(this.$router.currentRoute.name)
+		this.activeName = this.$router.currentRoute.name
+	},
 	methods:{
 		selectNav(val){
-			let _this=this
-			switch(val)
-			{
-				case 1:
-					_this.$router.push('/attendence')
-					break
-				case 2:
-					_this.$router.push('/student')
-					break
-				case 3:
-					_this.$router.push('/dailyRecord')
-					break
-				case 4:
-					_this.$router.push('/totation')
-					break
-				case 5:
-					_this.$router.push('/grade')
-					break
-				case 6:
-					_this.$router.push('/diseaserecord')
-					break
-				case 7:
-					_this.$router.push('/disease')
-					break
-				case 8:
-					_this.$router.push('/operation')
-					break
-				case 9:
-					_this.$router.push('/doctor')
-					break
-				case 10:
-					_this.$router.push('/teacher')
-					break
-				case 11:
-					_this.$router.push('/mytest')
-					break
-				default:
-					_this.$Message.error('发生了意料之外的错误')
-					break
-			}
+			this.$router.push('/'+ val)
 		},
 	}
 }
