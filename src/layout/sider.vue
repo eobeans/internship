@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-03 13:29:27
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-05 01:39:32
+ * @LastEditTime: 2021-06-06 01:16:55
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -52,6 +52,10 @@
 		<MenuItem name="mytest" @click.native="selectNav('mytest')">
 			<Icon type="ios-school" />
 			<span>我的测试</span>
+		</MenuItem>
+		<MenuItem name="editTable" @click.native="selectNav('editTable')">
+			<Icon type="ios-school" />
+			<span>可编辑表格</span>
 		</MenuItem>
 	</Menu>
 </Sider>
