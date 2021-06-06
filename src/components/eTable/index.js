@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 17:48:22
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-06 18:12:33
+ * @LastEditTime: 2021-06-06 18:18:30
  * @Version: 0.1.0
  * @Description: 
  */
@@ -21,6 +21,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    // install,
+    install,
     ETable
 }

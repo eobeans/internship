@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 15:53:54
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-06 15:59:49
+ * @LastEditTime: 2021-06-06 18:34:19
  * @Version: 0.1.0
  * @Description: 
  */
@@ -12,7 +12,7 @@ Mock.setup({
   timeout: "100-500",
 });
 
-Mock.mock("http://localhost:8080/api/login", "post", (option) => {
+Mock.mock("https://test-example/api/login", "post", (option) => {
   let { username, password } = JSON.parse(option.body);
   return username === "admin" && password === "admin";
 });
@@ -39,7 +39,7 @@ function getRows(size) {
   return rows;
 }
 
-Mock.mock("http://localhost:8080/api/Getlist", "post", function (options) {
+Mock.mock("https://test-example/api/Getlist", "post", function (options) {
   let body = JSON.parse(options.body);
   let rows = getRows(body.pageSize || 50);
   let size = Mock.mock({
@@ -87,7 +87,7 @@ let defaultF = Mock.mock({
     data: [false, true],
   });
 
-Mock.mock("http://localhost:8080/api/filter", "post", function (options) {
+Mock.mock("https://test-example/api/filter", "post", function (options) {
   let body = JSON.parse(options.body),
     data;
   switch (body.column) {
