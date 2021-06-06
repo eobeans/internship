@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-05-27 22:42:25
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-06 01:18:48
+ * @LastEditTime: 2021-06-06 20:17:31
  * @Version: 0.1.0
  * @Description: 
  */
@@ -25,6 +25,7 @@ import doctor from '@/pages/doctor'
 import teacher from '@/pages/teacher'
 import mytest from '@/pages/mytest'
 import editTable from '@/pages/editTable'
+import simpleEditTable from '@/pages/simpleEditTable'
 
 Vue.use(Router)
 Vue.use(iview)
@@ -95,6 +96,11 @@ export default new Router({
           path: 'editTable',
           name: 'editTable',
           component: editTable
+        },
+        {
+          path: 'simpleEditTable',
+          name: 'simpleEditTable',
+          component: simpleEditTable
         },
       ]
     },
