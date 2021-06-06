@@ -2,12 +2,12 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 01:09:14
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-06 19:14:31
+ * @LastEditTime: 2021-06-06 19:24:09
  * @Version: 0.1.0
  * @Description: 
 -->
 <template>
-	<div class="layout">
+	<div id="myEditTable" class="layout">
 		<Layout :style="{padding: '0 12px 12px'}">
 			<Content id="editTable" :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
 				<e-table
@@ -287,121 +287,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-$theme-color: #409eff;
-
-$active-color: $theme-color;
-
-$blur-color: #dcdfe6;
-
-$danger-color: #F56C6C;
-
-$title-color: #909399;
-
-$withe: #ffffff;
-$black: #000000;
-
-$editCell-color: #1574911c;
-$editCell-active-color: #2584e9;
-
-$current-color:#ecf5ff;
-
-$transition: all 0.3s;
-
-$head-bgc: #fafafa;
-
-$border-color:#DCDFE6;
-
-$default-bgc: #f5f7fa;
-
-$hover-bgc: #f5f7fa;
-
-#editTable {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  height: 100%;
-  overflow: hidden;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  // .e-table {
-  //   flex: 1 1 auto;
-  // }
-  .nodata {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 20px;
-    h3 {
-      margin: 0;
-      padding: 0;
-      color: gray;
-    }
-  }
-  .e-filted-list {
-    list-style: none;
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin: 0px;
-    padding: 3px 10px;
-    max-height: 80px;
-    padding-bottom: 20px;
-    overflow: auto;
-    li {
-      position: relative;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      font-size: 12px;
-      display: inline-block;
-      align-items: center;
-      border-radius: 4px;
-      padding: 3px 5px;
-      border: 1px solid #ccc;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      color: $title-color;
-      transition: all 0.3s ease-in-out;
-      div {
-        display: inline;
-      }
-      b {
-        padding-right: 3px;
-      }
-      &.filted-item:hover {
-        cursor: pointer;
-        &::before {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-      &.filted-item::before {
-        content: "Delete";
-        position: absolute;
-        color: #fff;
-        background-color: rgba($color: $danger-color, $alpha: 0.8);
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 0;
-        opacity: 0;
-        line-height: 22px;
-        text-align: center;
-        transform: translateX(100%);
-        transition: all 0.3s ease-in-out;
-      }
-    }
-    .clear-all {
-      background-color: $danger-color;
-      border-color: $danger-color;
-      color: #fff;
-      cursor: pointer;
-    }
-  }
-}
-</style>
