@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 17:48:48
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-06 18:03:09
+ * @LastEditTime: 2021-06-06 19:16:41
  * @Version: 0.1.0
  * @Description: 
  */
@@ -237,7 +237,7 @@ export default {
 	created() {
 		this.tableConfig = mergeOptions(this.tableConfig, this.config)
 		this.attrsFilter()
-		console.log(this.$root['$options']['components']['ETable'])
+		// console.log(this.$root['$options']['components']['ETable'])
 	},
 
 	props: {

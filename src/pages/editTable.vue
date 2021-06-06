@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 01:09:14
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-06 18:04:59
+ * @LastEditTime: 2021-06-06 19:14:31
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -50,7 +50,7 @@
 import customCellInput from "../components/editCell/customCellInput.vue";
 import { isFunction } from "@/utils/e-table.js";
 import req from "@/utils/request.js";
-import ETable from '../components/eTable/index'
+import ETable from '../components/eTable/e-table.js'
 export default {
 	name: 'myEditTable',
 	components: {

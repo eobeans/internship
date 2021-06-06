@@ -2,9 +2,9 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 17:48:22
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-06 18:18:30
+ * @LastEditTime: 2021-06-06 19:15:36
  * @Version: 0.1.0
- * @Description: 
+ * @Description: 当需要作为插件时，引用这个
  */
 import ETable from './e-table.js'
 
