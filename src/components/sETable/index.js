@@ -2,63 +2,121 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 20:25:04
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-06 21:45:21
+ * @LastEditTime: 2021-06-07 21:51:48
  * @Version: 0.1.0
  * @Description: 
  */
-import editCell from './mixins/editCell.js'
-import cellRender from './components/cellRender.js'
-import columnHeader from './components/columnHeader.js'
-import indexAndSelection from './components/indexAndSelection.js'
-import { hasOwn, mergeOptions, isArray, isObject } from './utils/index.js'
+// import editCell from './mixins/editCell.js'
+// import cellRender from './components/cellRender.js'
+// import columnHeader from './components/columnHeader.js'
+// import indexAndSelection from './components/indexAndSelection.js'
+import defaultC from './editCell/default'
 
+const cellRender = function(props, h, col) {
+	const _this = this
+	let { row, column } = props
+	// let isCan = col.edit
+	let isCan = !col.edit
 
+	isCan &&
+		_this.setEditMap({
+			x: row.rowIndex,
+			y: column.property,
+		})
+	
+		if ( isCan && _this.editX === row.rowIndex && _this.editY === column.property ) {
+			let options = {
+				attrs: {
+					...col.editAttrs,
+				},
+				props: {
+					value_: row[col.prop],
+					column: column,
+					columnObj: col,
+					row: row,
+				},
+				on: {
+					...col.editListeners,
+					change: (v, event) => {
+						row[col.prop] = v
+
+						_this.$emit('cell-value-change', v, row, column, col)
+					},
+				},
+				nativeOn: {
+					click: e => {
+						e.stopPropagation()
+					},
+				},
+				directives: [
+					{
+						name: 'focus',
+					},
+				],
+			}
+			if (col.editComponent && typeof col.editComponent === 'object') {
+				return h(col.editComponent, options)
+			} else {
+				return h(defaultC, options)
+			}
+		} else {
+			if (col.renderCell && typeof col.renderCell === 'function') {
+				// 自定义Render
+				return col.renderCell.call(_this, h, {
+					value: row[col.prop],
+					row: row,
+					column: column,
+				})
+			} else {
+				// default cell render
+				let value =
+					col.formatter && typeof col.formatter === 'function'
+						? col.formatter(row[col.prop], row, column)
+						: row[col.prop]
+				return h(
+					'span',
+					col.valueAsHtml
+						? {
+								domProps: {
+									innerHTML: value,
+								},
+							}
+						: value
+				)
+			}
+		}
+}
+const columnHeader = function(props, h, col) {
+	return (
+    <span class='e-custom-header'>
+      { col.label || col.prop }
+    </span>
+  )
+}
 export default {
 	name: 'SETable',
-
-	mixins: [editCell],
 
 	inheritAttrs: false,
 
 	render(h) {
 		const _this = this
 		function columnRender(col, h) {
-			if (!hasOwn(col, 'childrens')) {
-				if (col.hidden === true) return null
+			if (col.hidden === true) return null
 
-				return h('el-table-column', {
-					props: {
-						...col,
-					},
-					key: col.prop,
-					scopedSlots: {
-						header:
-							!col.defaultHeader &&
-							(props => {
-								return columnHeader.call(_this, props, h, col)
-							}),
-						default: props => cellRender.call(_this, props, h, col),
-					},
-				})
-			} else {
-				if (col.hidden === true) return
-				if (isArray(col.childrens) && col.childrens.length) {
-					return h(
-						'el-table-column',
-						{
-							attrs: {
-								...col,
-								label: col.label || col.prop,
-							},
-						},
-						[
-							...col.childrens.map(column => {
-								return columnRender(column, h)
-							}),
-						]
-					)
-				}
-			}
+			return h('el-table-column', {
+				props: {
+					...col,
+				},
+				key: col.prop,
+				scopedSlots: {
+					header:
+						!col.defaultHeader &&
+						(props => {
+							return columnHeader.call(_this, props, h, col)
+						}),
+					default: props => cellRender.call(_this, props, h, col),
+				},
+			})
 		}
 
 		const tableRender = h(
@@ -86,8 +144,6 @@ export default {
 				},
 			},
 			[
-				...indexAndSelection.call(this, h), // index and selection
-
 				this.columns.map(function (col) {
 					// render column
 					return columnRender(col, h)
@@ -99,34 +155,18 @@ export default {
 			]
 		)
 
-		const hasPaginationTemp = () => {
-			const defPaginationOpt = {
-				background: true,
-				layout: 'prev, pager, next',
-				total: 0,
-			}
-			const onList = Object.keys(this.$listeners)
-				.filter(name => /^(pagination-)/.test(name))
-				.reduce((on, name) => {
-					on[name.replace(/^(pagination-)/, '')] = this.$listeners[name]
-					return on
-				}, {})
+		return tableRender
+	},
 
-			const paginationRender = h('ElPagination', {
-				props: {
-					...defPaginationOpt,
-					...(isObject(this.pagination) ? this.pagination : {}),
-				},
-				on: onList,
-			})
-
-			return h('div', { class: ['e-table-pagination'] }, [
-				tableRender,
-				paginationRender,
-			])
+	directives: {
+		focus: {
+			inserted(el) {
+				let Element = el.querySelector('input')
+				if (Element) {
+					Element.focus()
+				}
+			},
 		}
-
-		return this.pagination ? hasPaginationTemp() : tableRender
 	},
 
 	computed: {
@@ -134,24 +174,7 @@ export default {
 			return {
 				'cell-click': this.cellClick
 			}
-		},
-		hasLeftFixed() {
-			return this.columns.some(
-				c => hasOwn(c, 'fixed') && (c.fixed === 'left' || c.fixed === true)
-			)
-		},
-		maxSelectionRow() {
-			if (this.selectionRow.length == 0) return null
-			return this.selectionRow.reduce((start, end) => {
-				return start.rowIndex > end.rowIndex ? start : end
-			})
-		},
-		minSelectionRow() {
-			if (this.selectionRow.length == 0) return null
-			return this.selectionRow.reduce((start, end) => {
-				return start.rowIndex < end.rowIndex ? start : end
-			})
-		},
+		}
 	},
 
 	methods: {
@@ -173,15 +196,10 @@ export default {
 			let rowName = this.rowClassName
 				? this.rowClassName.call(null, {
 						row,
-						column,
-						rowIndex,
-						columnIndex,
+						rowIndex
 				  })
 				: ''
-			var findRow = this.selectionRow.find(c => c.rowIndex == row.rowIndex)
-			if (findRow) {
-				rowName = 'current-row ' + rowName
-			}
+
 			return rowName
 		},
 
@@ -203,36 +221,32 @@ export default {
 			return cellName
 		},
 
-		attrsFilter() {
-			for (let c = 0; c < this.columns.length; c++) {
-				this.traversalCol(this.columns[c])
-			}
-		},
-
-		traversalCol(c) {
-			if (!hasOwn(c, 'childrens') || !Array.isArray(c['childrens'])) {
-				//当默认表头过滤和自定义过滤同时存在时 根据defaultHeader 显示哪个过滤
-				if (hasOwn(c, 'filters') && !c.defaultHeader) {
-					delete c['filters']
-				}
-			} else {
-				if (Array.isArray(c['childrens']) && c['childrens'].length > 0) {
-					for (let cc = 0; cc < c.childrens.length; cc++) {
-						this.traversalCol(c.childrens[cc])
-					}
-				}
-			}
-		},
     // 取消编辑
     cancelEdit() {
       this.editX = null;
       this.editY = null;
     },
+		cellClick(row, column, cell, event) {
+      this.$emit("cell-click", row, column, event);
+      if (!this.isEditCell(row, column)) {
+        return;
+      }
+      event.stopPropagation();
+      this.editX = row.rowIndex;
+      this.editY = column.property;
+    },
+    isEditCell(row, column) {
+      return this.editMap.some(
+        (e) => e.x === row.rowIndex && e.y === column.property
+      );
+    },
+    setEditMap(obj) {
+      if (this.editMap.some((e) => e.x === obj.x && e.y === obj.y)) return;
+      this.editMap.push(obj);
+    }
 	},
 
 	created() {
-		this.tableConfig = mergeOptions(this.tableConfig, this.config)
-		this.attrsFilter()
 		// console.log(this.$root['$options']['components']['ETable'])
 	},
 
@@ -253,27 +267,22 @@ export default {
 
 	data() {
 		return {
-			reLayoutTimer: null,
-
-			filterLoads: [],
-			filtedList: {},
-			filterPanels: {},
-			headFCNs: [],
-			selectionRow: [],
 			editX: null,
 			editY: null,
-			editMap: [],
-
-			tableConfig: {
-				index: true,
-				selection: true,
-			},
+			editMap: []
 		}
 	},
 
 	watch: {
+		editX(n) {
+			if (n !== null) {
+				window.addEventListener("click", this.cancelEdit);
+			} else {
+				window.removeEventListener("click", this.cancelEdit);
+			}
+		},
 		'$attrs.data': function (n) {
 			this.editMap = []
-		},
+		}
 	},
 }
