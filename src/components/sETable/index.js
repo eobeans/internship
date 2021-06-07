@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 20:25:04
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-07 21:51:48
+ * @LastEditTime: 2021-06-07 22:00:40
  * @Version: 0.1.0
  * @Description: 
  */
@@ -27,17 +27,17 @@ const cellRender = function(props, h, col) {
 		if ( isCan && _this.editX === row.rowIndex && _this.editY === column.property ) {
 			let options = {
 				attrs: {
-					...col.editAttrs,
+					...col.editAttrs
 				},
 				props: {
-					value_: row[col.prop],
+					iValue: row[col.prop],
 					column: column,
 					columnObj: col,
-					row: row,
+					row: row
 				},
 				on: {
 					...col.editListeners,
-					change: (v, event) => {
+					change: (v) => {
 						row[col.prop] = v
 
 						_this.$emit('cell-value-change', v, row, column, col)
@@ -125,9 +125,7 @@ export default {
 				ref: 'elTable',
 				props: {
 					...this.$attrs,
-					rowStyle: this.rowStyle_,
-					cellClassName: this.cellClassName_,
-					rowClassName: this.rowClassName_,
+					rowStyle: this.rowStyle_
 				},
 				class: {
 					'e-table': true,
@@ -172,7 +170,7 @@ export default {
 	computed: {
 		eListeners() {
 			return {
-				'cell-click': this.cellClick
+				'cell-dblclick': this.cellClick
 			}
 		}
 	},
@@ -191,43 +189,13 @@ export default {
 				  })
 				: null
 		},
-
-		rowClassName_({ row, rowIndex }) {
-			let rowName = this.rowClassName
-				? this.rowClassName.call(null, {
-						row,
-						rowIndex
-				  })
-				: ''
-
-			return rowName
-		},
-
-		cellClassName_({ row, column, rowIndex, columnIndex }) {
-			let cellName = this.cellClassName
-				? this.cellClassName.call(null, {
-						row,
-						column,
-						rowIndex,
-						columnIndex,
-				  })
-				: ''
-			if (this.isEditCell(row, column)) {
-				cellName += ' edit-cell'
-				if (this.editX === row.rowIndex && this.editY === column.property) {
-					cellName += ' edit-active'
-				}
-			}
-			return cellName
-		},
-
     // 取消编辑
     cancelEdit() {
       this.editX = null;
       this.editY = null;
     },
 		cellClick(row, column, cell, event) {
-      this.$emit("cell-click", row, column, event);
+      this.$emit("cell-dblclick", row, column, event);
       if (!this.isEditCell(row, column)) {
         return;
       }
@@ -246,10 +214,6 @@ export default {
     }
 	},
 
-	created() {
-		// console.log(this.$root['$options']['components']['ETable'])
-	},
-
 	props: {
 		columns: {
 			type: Array,
@@ -258,11 +222,7 @@ export default {
 			},
 		},
 		config: Object,
-		rowStyle: Function,
-		rowClassName: Function,
-		cellClassName: Function,
-		getFilters: Function,
-		pagination: [Object, Boolean],
+		rowStyle: Function
 	},
 
 	data() {
