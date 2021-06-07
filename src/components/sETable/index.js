@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 20:25:04
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-07 22:00:40
+ * @LastEditTime: 2021-06-07 22:04:27
  * @Version: 0.1.0
  * @Description: 
  */
@@ -221,8 +221,12 @@ export default {
 				return []
 			},
 		},
-		config: Object,
-		rowStyle: Function
+		rowStyle: {
+			type: Function,
+			default: function () {
+				return null
+			},
+		}
 	},
 
 	data() {
