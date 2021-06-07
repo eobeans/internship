@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 20:16:43
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-06 21:44:25
+ * @LastEditTime: 2021-06-07 21:11:04
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -14,10 +14,6 @@
           ref="table"
 					:data="tableData"
 					:columns="columns"
-					:config="config"
-					stripe
-					border
-					height="600px"
 					@cell-value-change="cellValueChange"
 					v-loading="loading"
         >
@@ -41,122 +37,25 @@ export default {
       columns: [
         {
           prop: "name",
-          label: "名字 [自定义内容]",
-          filters: ["s", "a"],
-          filter: true,
-          width: 170,
-          renderCell: (h, { value, row, column }) => {
-            return h(
-              "el-button",
-              {
-                props: {
-                  size: "small",
-                  type: value.length > 2 ? "success" : "danger",
-                },
-                on: {
-                  click: (e) => {
-                    console.log(e, value);
-                  },
-                },
-              },
-              value
-            );
-          },
+          label: "name",
         },
         {
-          prop: "china",
-          label: "中国 [多级表头]",
-          childrens: [
-            {
-              label: "省份",
-              childrens: [
-                {
-                  prop: "city",
-                  label: "城市 [控制编辑单元]",
-                  filter: true,
-                  width: 250,
-                  edit: true,
-                  editControl: (v, r, c) => {
-                    if (r.sex) {
-                      return false;
-                    }
-                    return true;
-                  },
-                },
-              ],
-            },
-            {
-              prop: "address",
-              label: "地址",
-              width: 250,
-            },
-          ],
+          prop: "jan",
+          label: "jan"
         },
         {
-          prop: "datetime",
-          label: "时间 [日期过滤]",
-          width: 200,
-          filter: true,
-          filterType: "datePicker",
-          filterAttrs: {
-            "value-format": "yyyy/MM/dd",
-          },
-          filterListeners: {
-            change: (e) => {
-              console.log("[Data filter change] filterValue:", e);
-            },
-          },
+          prop: "sec",
+          label: "sec"
         },
         {
-          prop: "email",
-          label: "邮件",
-          sortable: true,
-          filter: true,
-          width: 230,
-          edit: true,
-          editListeners: {
-            focus: (event) => {
-              console.log("[editListeners] [focus event]", event);
-            },
-          },
+          prop: "mar",
+          label: "mar"
         },
         {
-          prop: "tel",
-          label: "电话[ 默认header ]",
-          width: 200,
-          defaultHeader: true,
-          filterPlacement: "bottom",
-          sortable: true,
-        },
-        {
-          prop: "sex",
-          label: "性别 [格式化显示]",
-          width: 150,
-          valueAsHtml: true,
-          formatter: (v) => {
-            return v
-              ? "<span style='color:blue'>男</span>"
-              : "<span style='color:red'>女</span>";
-          },
-        },
-
-        {
-          prop: "companyName",
-          label: "公司名称 [自定义编辑组件]",
-          width: 250,
-          filter: true,
-          edit: true,
-        },
-        {
-          prop: "bool",
-          label: "布尔值",
-          width: 120,
-        },
-      ],
-      config: {
-        index: { align: "center" },
-        selection: true
-      },
+          prop: "apr",
+          label: "apr"
+        }
+      ]
     };
   },
 	mounted(){
