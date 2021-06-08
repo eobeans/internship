@@ -2,21 +2,18 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 20:25:04
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-07 22:04:27
+ * @LastEditTime: 2021-06-08 23:21:47
  * @Version: 0.1.0
  * @Description: 
  */
-// import editCell from './mixins/editCell.js'
-// import cellRender from './components/cellRender.js'
-// import columnHeader from './components/columnHeader.js'
-// import indexAndSelection from './components/indexAndSelection.js'
 import defaultC from './editCell/default'
 
 const cellRender = function(props, h, col) {
 	const _this = this
 	let { row, column } = props
-	// let isCan = col.edit
 	let isCan = !col.edit
+	console.log('cellRender')
+
 
 	isCan &&
 		_this.setEditMap({
@@ -101,8 +98,6 @@ export default {
 	render(h) {
 		const _this = this
 		function columnRender(col, h) {
-			if (col.hidden === true) return null
-
 			return h('el-table-column', {
 				props: {
 					...col,
@@ -118,7 +113,7 @@ export default {
 				},
 			})
 		}
-
+		console.log('tableRender')
 		const tableRender = h(
 			'el-table',
 			{
@@ -210,6 +205,7 @@ export default {
     },
     setEditMap(obj) {
       if (this.editMap.some((e) => e.x === obj.x && e.y === obj.y)) return;
+			
       this.editMap.push(obj);
     }
 	},
