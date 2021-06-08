@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 20:16:43
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-07 22:05:43
+ * @LastEditTime: 2021-06-08 23:27:31
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -32,7 +32,29 @@ export default {
   data() {
     return {
       loading: false,
-      tableData: [],
+      tableData: [
+        {
+          "jan": 123,
+          "sec": 124,
+          mar: 125,
+          apr: 236,
+          name: 2019
+        },
+        {
+          "jan": 323,
+          "sec": 224,
+          mar: 165,
+          apr: 236,
+          name: 2020
+        },
+        {
+          "jan": 143,
+          "sec": 154,
+          mar: 185,
+          apr: 136,
+          name: '计划'
+        }
+      ],
       columns: [
         {
           prop: "name",
@@ -57,28 +79,11 @@ export default {
       ]
     };
   },
-	mounted(){
-		this.getData();
-	},
+	mounted(){ },
   methods: {
     cellValueChange(v, row, column, columnObj) {
       console.log("change", v);
-    },
-    getData() {
-      this.loading = true;
-      let data = {
-        pageIndex: 1,
-        pageSize: 100,
-      };
-      req({
-        url: "/Getlist",
-        method: "post",
-        data,
-      }).then((res) => {
-        this.tableData = res.rows;
-        this.loading = false;
-      });
-    },
+    }
   }
 }
 </script>

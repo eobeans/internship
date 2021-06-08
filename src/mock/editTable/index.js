@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 15:53:54
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-07 21:13:28
+ * @LastEditTime: 2021-06-08 23:26:51
  * @Version: 0.1.0
  * @Description: 
  */
@@ -19,46 +19,23 @@ Mock.mock("https://test-example/api/login", "post", (option) => {
 
 function getRows(size) {
   let rows = [];
-  // for (let i = 1; i <= size; i++) {
-  //   rows.push(
-  //     Mock.mock({
-  //       id: "@id",
-  //       name: "@cname",
-  //       city: "@city",
-  //       email: "@email",
-  //       address: "@county(true)",
-  //       datetime: "@datetime()",
-  //       tel: /^1[385][1-9]\d{8}/,
-  //       companyName:
-  //         "@pick(['xx科技', 'xx实业', 'xx技术', 'xx信息', 'xx地产'])",
-  //       bool: "@Boolean",
-  //       "sex|1": [1, 0],
-  //     })
-  //   );
-  // }
-  rows = [
-    {
-      "jan": 123,
-      "sec": 124,
-      mar: 125,
-      apr: 236,
-      name: 2019
-    },
-    {
-      "jan": 323,
-      "sec": 224,
-      mar: 165,
-      apr: 236,
-      name: 2020
-    },
-    {
-      "jan": 143,
-      "sec": 154,
-      mar: 185,
-      apr: 136,
-      name: '计划'
-    }
-  ]
+  for (let i = 1; i <= size; i++) {
+    rows.push(
+      Mock.mock({
+        id: "@id",
+        name: "@cname",
+        city: "@city",
+        email: "@email",
+        address: "@county(true)",
+        datetime: "@datetime()",
+        tel: /^1[385][1-9]\d{8}/,
+        companyName:
+          "@pick(['xx科技', 'xx实业', 'xx技术', 'xx信息', 'xx地产'])",
+        bool: "@Boolean",
+        "sex|1": [1, 0],
+      })
+    );
+  }
   return rows;
 }
 
