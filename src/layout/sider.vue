@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-03 13:29:27
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-05 01:39:32
+ * @LastEditTime: 2021-06-08 23:25:52
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -50,8 +50,16 @@
 			<span>学校教师账号管理</span>
 		</MenuItem>
 		<MenuItem name="mytest" @click.native="selectNav('mytest')">
-			<Icon type="ios-school" />
+			<Icon type="md-snow" />
 			<span>我的测试</span>
+		</MenuItem>
+		<MenuItem name="editTable" @click.native="selectNav('editTable')">
+			<Icon type="ios-list-box" />
+			<span>可编辑表格</span>
+		</MenuItem>
+		<MenuItem name="simpleEditTable" @click.native="selectNav('simpleEditTable')">
+			<Icon type="ios-grid" />
+			<span>简易可编辑表格</span>
 		</MenuItem>
 	</Menu>
 </Sider>
