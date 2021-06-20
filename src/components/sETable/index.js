@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-06 20:25:04
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-08 23:21:47
+ * @LastEditTime: 2021-06-20 17:04:16
  * @Version: 0.1.0
  * @Description: 
  */
@@ -12,7 +12,7 @@ const cellRender = function(props, h, col) {
 	const _this = this
 	let { row, column } = props
 	let isCan = !col.edit
-	console.log('cellRender')
+	// console.log('cellRender')
 
 
 	isCan &&
@@ -113,7 +113,7 @@ export default {
 				},
 			})
 		}
-		console.log('tableRender')
+		// console.log('tableRender')
 		const tableRender = h(
 			'el-table',
 			{
@@ -232,7 +232,9 @@ export default {
 			editMap: []
 		}
 	},
-
+	mounted(){
+		console.log('sETable')
+	},
 	watch: {
 		editX(n) {
 			if (n !== null) {
