@@ -2,39 +2,25 @@
  * @Autor: eobeans
  * @Date: 2021-06-01 23:12:26
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-05 01:44:59
+ * @LastEditTime: 2021-06-24 21:12:57
  * @Version: 0.1.0
  * @Description: 
 -->
-<template>
-	<div class="layout">
-		<Layout :style="{padding: '0 12px 12px'}">
-			<Content :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
-				<div style="height:400px">
-						<dev-line-chart
-							ref="zzqxtChart"
-							title="非居民税收所得类型占比情况"
-							:is-finished.sync="zzqxtFinished"
-							:height="400"
-							:data="barLineChartData"
-							:chartOpt="{}"
-							showLegend
-						>
-						</dev-line-chart>
-				</div>
-			</Content>
-		</Layout>
-	</div>
-</template>
 <script>
+import Vue from 'vue'
 import DevLineChart from '@/components/DevLineChart'
+import { Layout, Content } from 'view-design';
+
 export default {
 	name: 'testDevLineChart',
 	components: {
-		DevLineChart: DevLineChart
+		'DevLineChart': DevLineChart,
+		'Layout': Layout,
+		'Content': Content
 	},
 	data(){
 		return{
+			componentName: 'DevLineChart',
 			zzqxtFinished: false,
 			barLineChartData: [
 				{
@@ -82,9 +68,30 @@ export default {
 			],
 		}
 	},
-	mounted(){},
-	methods:{
-	
+	render(h){
+		return (
+			<div class="layout">
+				<Layout style="{padding: '0 12px 12px'}">
+					<Content style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
+						<div style="height:400px">
+							{
+								h(this.componentName,
+									{
+										ref:"zzqxtChart",
+										title:"类型占比情况",
+										isFinished_sync: this.zzqxtFinished,
+										height: 400,
+										data: this.barLineChartData,
+										chartOpt: {},
+										showLegend: true
+									}
+								)
+							}
+						</div>
+					</Content>
+				</Layout>
+			</div>
+		)
 	}
 }
 </script>

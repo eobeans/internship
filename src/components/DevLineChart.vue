@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-01 23:04:02
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-05 01:53:02
+ * @LastEditTime: 2021-06-24 21:15:11
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -49,7 +49,50 @@ export default {
       required: false,
       type: Array,
       default: function () {
-        return [] // [{name:'柱状分类名称',data:[{value: 100, name: 'x轴名称'}]]
+        return [
+          {
+            name: '2020',
+            data: [
+              {
+                name: '1月',
+                value: 50
+              },
+              {
+                name: '2月',
+                value: 50
+              },
+              {
+                name: '3月',
+                value: 50
+              },
+              {
+                name: '4月',
+                value: 50
+              },
+            ]
+          },
+          {
+            name: '2021',
+            data: [
+              {
+                name: '1月',
+                value: 100
+              },
+              {
+                name: '2月',
+                value: 100
+              },
+              {
+                name: '3月',
+                value: 100
+              },
+              {
+                name: '4月',
+                value: 100
+              },
+            ]
+          }
+        ] // [{name:'柱状分类名称',data:[{value: 100, name: 'x轴名称'}]]
       }
     },
     showLegend: {
