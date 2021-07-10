@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-03 13:29:27
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-27 23:46:38
+ * @LastEditTime: 2021-07-10 13:18:11
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -10,18 +10,11 @@
 // import setting from '../setting'
 import routes from '../router/label.js'
 const cloneDeep = require('lodash/cloneDeep')
-import { Sider, Submenu, MenuItem, Menu } from 'view-design';
 
 export default {
 	name: 'MySider',
 	inheritAttrs: false,
-	
-	components: {
-		'Sider': Sider,
-		'Submenu': Submenu,
-		'MenuItem': MenuItem,
-		'Menu': Menu
-	},
+
 	data(){
 		return{    
 			minHeight:0,
@@ -31,51 +24,62 @@ export default {
 	render(h) {
 		const _this = this
 		const myRoutes = cloneDeep(routes)
-		const createMenus = function () {
-			return (
-				myRoutes.map(function(route) {
-					if (route.name === 'login' || route.name === 'register'){
-						console.log('login or register')
-					} else {
-						console.log('Submenu')
-						return (
-							<Submenu name={route.name}>
-								<template slot="title">
-										<icon type={route.icon} />
-										{route.label}
-								</template>
-								{route.children&&route.children.length > 0 ? createMenuItem(route.children) : null}
-							</Submenu>
-						)
-					}
-				})
-			)
-		}
-		const createMenuItem = function(routeChild) {
-			console.log('MenuItem')
-			return (
-				routeChild.map(function(item) {
-					<MenuItem name={item.name} on-click_native={_this.selectNav(item.name)}>
-						<icon type={item.icon} />
-						<span>{item.label}</span>
-					</MenuItem>
-				})
-			)
-		}
+		// console.log('myRoutes', myRoutes)
 		return (
-			<Sider ref="side" hide-trigger collapsible collapsed-width="78" style="{background: '#fff'}">
-				<Menu active-name={_this.activeName} theme="light" width="auto" style="{ minHeight: minHeight + 'px'}">
-					{createMenus}
-				</Menu>
-			</Sider>
+			<el-container>
+				<el-aside>
+					<el-menu on-select={_this.selectNav}>
+						{
+							myRoutes.map((route) => {
+								if (route.children&&route.children.length > 0) {
+									// console.log('route.children', route.children)
+									return (
+										<el-submenu index={route.path}>
+											<template slot="title">
+												<i class={route.icon}></i>
+												{route.label}
+											</template>
+											{
+												route.children.map((item) => {
+													return (
+														<el-menu-item index={item.path}>
+															<i class={item.icon}></i>
+															<span>{item.label}</span>
+														</el-menu-item>
+													)
+												})
+											}
+										</el-submenu>
+									)
+								} else {
+									// console.log(route.name)
+									return (
+										<el-menu-item index={route.path}>
+											<template slot="title">
+												<i class={route.icon}></i>
+												{route.label}
+											</template>
+										</el-menu-item>
+									)
+								}
+							})
+						}
+					</el-menu>
+				</el-aside>
+			</el-container>
 		)
 	},
 	mounted(){
-		this.activeName = this.$router.currentRoute.name
+		// this.activeName = this.$router.currentRoute.name
 	},
-	methods:{
-		selectNav(val){
-			this.$router.push('/'+ val)
+	methods: {
+		selectNav(index, indexPath) {
+			// console.log('selectNav', index, indexPath)
+			let menuPath = ''
+			for (let ind = 0; ind < indexPath.length; ind++) {
+				menuPath += '/'  + indexPath[ind]
+			}
+			this.$router.push(menuPath)
 		}
 	}
 }
