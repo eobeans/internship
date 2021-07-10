@@ -2,24 +2,22 @@
  * @Autor: eobeans
  * @Date: 2021-05-27 22:42:25
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-27 23:38:35
+ * @LastEditTime: 2021-07-10 11:22:05
  * @Version: 0.1.0
  * @Description: 
  */
-import Vue from 'vue'
-import App from './App'
-import router from './router'
-import VueResource from 'vue-resource'
-import store from './store/index'
-import './styles/index.scss'
-import ElementUI from 'element-ui'
-import 'view-design/dist/styles/iview.css';
+import Vue from 'vue';
+import App from './App';
+import router from './router';
+import VueResource from 'vue-resource';
+import store from './store/index';
+import './styles/index.scss';
+import ElementUI from 'element-ui';
 import './mock/index'
 
 Vue.use(VueResource)
-Vue.use(ElementUI);
+Vue.use(Element, { size: 'small', zIndex: 3000 });
 Vue.config.productionTip = false
-
 
 new Vue({
   el: '#app',
