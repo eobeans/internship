@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-05-27 22:42:25
  * @LastEditors: eobeans
- * @LastEditTime: 2021-07-10 11:07:27
+ * @LastEditTime: 2021-07-31 14:19:03
  * @Version: 0.1.0
  * @Description: 
  */
@@ -24,6 +24,7 @@ import teacher from '@/pages/teacher'
 import mytest from '@/pages/mytest'
 import editTable from '@/pages/editTable'
 import simpleEditTable from '@/pages/simpleEditTable'
+import zoumadeng from '@/pages/collect/zoumadeng'
 
 Vue.use(Router)
 
@@ -126,6 +127,13 @@ export default new Router({
           icon: 'ios-grid',
           label: '简易可编辑表格',
           component: simpleEditTable
+        },
+        {
+          path: 'wyyzmd',
+          name: 'wyyzmd',
+          icon: 'ios-grid',
+          label: '走马灯',
+          component: zoumadeng
         },
       ]
     },

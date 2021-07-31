@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-20 18:29:57
  * @LastEditors: eobeans
- * @LastEditTime: 2021-07-10 13:17:09
+ * @LastEditTime: 2021-07-31 14:23:12
  * @Version: 0.1.0
  * @Description: 
  */
@@ -90,6 +90,12 @@ const routes = [
         name: 'simpleEditTable',
         icon: 'el-icon-chat-dot-square',
         label: '简易可编辑表格'
+      },
+      {
+        path: 'wyyzmd',
+        name: 'wyyzmd',
+        icon: 'el-icon-s-finance',
+        label: '走马灯'
       },
     ]
   },
