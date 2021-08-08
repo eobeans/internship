@@ -117,7 +117,8 @@ export default {
           this.downloadClick('test', cancasImg);
         });
       }
-
+      // 滚动条置顶
+      document.documentElement.scrollTop = 0;
       // 调用函数，取到截图的二进制数据，对图片进行处理（保存本地、展示等）
       const element = document.getElementById('attendence');
       convertToImage(element);
