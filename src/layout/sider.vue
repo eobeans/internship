@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-03 13:29:27
  * @LastEditors: eobeans
- * @LastEditTime: 2021-07-10 13:18:11
+ * @LastEditTime: 2021-08-10 22:06:15
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -26,8 +26,8 @@ export default {
 		const myRoutes = cloneDeep(routes)
 		// console.log('myRoutes', myRoutes)
 		return (
-			<el-container>
-				<el-aside>
+			<el-container style="min-width: 220px;">
+				<el-aside style="min-width: 220px;">
 					<el-menu on-select={_this.selectNav}>
 						{
 							myRoutes.map((route) => {
