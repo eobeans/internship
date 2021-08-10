@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-20 18:29:57
  * @LastEditors: eobeans
- * @LastEditTime: 2021-07-31 14:23:12
+ * @LastEditTime: 2021-08-09 22:02:16
  * @Version: 0.1.0
  * @Description: 
  */
@@ -96,6 +96,12 @@ const routes = [
         name: 'wyyzmd',
         icon: 'el-icon-s-finance',
         label: '走马灯'
+      },
+      {
+        path: 'htmlToCanvas',
+        name: 'htmlToCanvas',
+        icon: 'ios-grid',
+        label: 'html转Canvas'
       },
     ]
   },
