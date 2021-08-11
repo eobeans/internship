@@ -2,9 +2,9 @@
  * @Author: eobeans
  * @Date: 2021-08-10 21:59:15
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-10 22:00:14
+ * @LastEditTime: 2021-08-11 21:07:02
  * @version: 0.1.0
- * @Descripttion: 
+ * @Descripttion: import from https://blog.csdn.net/qq_38128179/article/details/103344021
  */
 export default function printHtml(html) {
   let style = getStyle();

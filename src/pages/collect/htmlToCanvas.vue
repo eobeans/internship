@@ -2,24 +2,26 @@
  * @Autor: eobeans
  * @Date: 2021-07-31 14:18:34
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-10 22:18:20
+ * @LastEditTime: 2021-08-11 21:19:46
  * @Version: 0.1.0
  * @Description: 
 -->
 <template>
-	<div class="layout" id="htmlToCanvas" style="background-color: transparent">
+	<div class="layout print-container" id="htmlToCanvas" style="background-color: transparent">
     <div>
       <span> hello html to canvas </span>
-      <div style="width:400px;height:400px;background-color: transparent;">
+      <div class="print-container" style="width:400px;height:400px;background-color: transparent;">
       </div>
     </div>
     <el-button @click="downLoadPdf">下载PDF</el-button>
     <el-button @click="print">打印</el-button>
+    <el-button @click="testPrint">打印(插件print-js)</el-button>
 	</div>
 </template>
 <script>
 import html2canvas from 'html2canvas'
 import printHtml from "@/utils/print.js"
+import printJS from 'print-js'
 export default {
 	name: 'htmlToCanvas',
 	components: {
@@ -84,6 +86,15 @@ export default {
     print() {
       let printData = document.getElementById('htmlToCanvas')
       printHtml(printData.outerHTML)
+    },
+    testPrint() {
+      const opt = {
+        printable: 'htmlToCanvas', // 打印对象
+        type: 'html',
+        css: '../../styles/index.scss',
+        documentTitle: 'htmlToCanvas-print-js'
+      }
+      printJS(opt)
     }
 	}
 }
