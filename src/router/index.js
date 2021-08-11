@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-05-27 22:42:25
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-09 22:02:07
+ * @LastEditTime: 2021-08-11 21:43:50
  * @Version: 0.1.0
  * @Description: 
  */
@@ -139,7 +139,7 @@ export default new Router({
         {
           path: 'htmlToCanvas',
           name: 'htmlToCanvas',
-          icon: 'ios-grid',
+          icon: 'el-icon-s-unfold',
           label: 'html转Canvas',
           component: htmlToCanvas
         },

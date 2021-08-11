@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-05-27 22:42:25
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-03 14:31:07
+ * @LastEditTime: 2021-08-11 21:34:52
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -17,13 +17,3 @@ export default {
   name: 'App',
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-</style>

@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-20 18:29:57
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-09 22:02:16
+ * @LastEditTime: 2021-08-11 21:43:45
  * @Version: 0.1.0
  * @Description: 
  */
@@ -100,7 +100,7 @@ const routes = [
       {
         path: 'htmlToCanvas',
         name: 'htmlToCanvas',
-        icon: 'ios-grid',
+        icon: 'el-icon-s-unfold',
         label: 'html转Canvas'
       },
     ]
