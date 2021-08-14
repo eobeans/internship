@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-20 18:29:57
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-09 22:02:16
+ * @LastEditTime: 2021-08-14 11:17:47
  * @Version: 0.1.0
  * @Description: 
  */
@@ -18,60 +18,6 @@ const routes = [
         name:'attendence',
         icon: 'el-icon-s-tools',
         label: '考勤总览'
-      },
-      {
-        path:'student',
-        name:'student',
-        icon: 'el-icon-user-solid',
-        label: '学生信息'
-      },
-      {
-        path:'dailyrecord',
-        name:'dailyrecord',
-        icon: 'el-icon-star-on',
-        label: '每日实习情况'
-      },
-      {
-        path:'totation',
-        name:'totation',
-        icon: 'el-icon-question',
-        label: '轮转科室情况'
-      },
-      {
-        path: 'grade',
-        name: 'grade',
-        icon: 'el-icon-folder',
-        label: '成绩考核记录'
-      },
-      {
-        path:'diseaserecord',
-        name:'diseaserecord',
-        icon: 'el-icon-tickets',
-        label: '诊断、操作记录'
-      },
-      {
-        path:'disease',
-        name:'disease',
-        icon: 'el-icon-document-add',
-        label: '病种记录表'
-      },
-      {
-        path:'operation',
-        name:'operation',
-        icon: 'el-icon-mouse',
-        label: '操作记录表'
-      },
-      {
-        path: 'doctor',
-        name: 'doctor',
-        icon: 'el-icon-pie-chart',
-        label: '医院账号管理'
-      },
-      {
-        path: 'teacher',
-        name: 'teacher',
-        icon: 'el-icon-receiving',
-        label: '学校教师账号管理'
       },
       {
         path: 'mytest',
@@ -102,6 +48,12 @@ const routes = [
         name: 'htmlToCanvas',
         icon: 'ios-grid',
         label: 'html转Canvas'
+      },
+      {
+        path: 'dateListByFreq',
+        name: 'dateListByFreq',
+        icon: 'ios-grid',
+        label: '生成日期列表'
       },
     ]
   },
