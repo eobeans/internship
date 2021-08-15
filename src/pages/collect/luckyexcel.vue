@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-08-15 11:48:50
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-15 16:54:38
+ * @LastEditTime: 2021-08-15 16:58:13
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -10,7 +10,7 @@
   <div class="hello">
     <div
       id="luckysheet"
-      style="margin:0px;padding:0px;position:absolute;width:100%;left: 0px;top: 30px;bottom:0px;"
+      style="margin:0px;padding:0px;position:absolute;width: calc(100% - 300px);left: 300px;top: 30px;bottom:0px;"
     ></div>
   </div>
 </template>
