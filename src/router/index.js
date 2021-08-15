@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-05-27 22:42:25
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-14 11:06:56
+ * @LastEditTime: 2021-08-15 11:49:59
  * @Version: 0.1.0
  * @Description: 
  */
@@ -18,6 +18,7 @@ import simpleEditTable from '@/pages/simpleEditTable'
 import zoumadeng from '@/pages/collect/zoumadeng'
 import htmlToCanvas from '@/pages/collect/htmlToCanvas'
 import dateListByFreq from '@/pages/collect/dateListByFreq'
+import luckyexcel from '@/pages/collect/luckyexcel'
 
 Vue.use(Router)
 
@@ -78,6 +79,13 @@ export default new Router({
           icon: 'ios-grid',
           label: '生成日期列表',
           component: dateListByFreq
+        },
+        {
+          path: 'luckyexcel',
+          name: 'luckyexcel',
+          icon: 'ios-grid',
+          label: 'webExcel',
+          component: luckyexcel
         },
       ]
     },
