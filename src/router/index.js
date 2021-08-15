@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-05-27 22:42:25
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-15 11:49:59
+ * @LastEditTime: 2021-08-15 17:15:28
  * @Version: 0.1.0
  * @Description: 
  */
@@ -19,6 +19,7 @@ import zoumadeng from '@/pages/collect/zoumadeng'
 import htmlToCanvas from '@/pages/collect/htmlToCanvas'
 import dateListByFreq from '@/pages/collect/dateListByFreq'
 import luckyexcel from '@/pages/collect/luckyexcel'
+import jspreadsheetCE from '@/pages/collect/jspreadsheetCE'
 
 Vue.use(Router)
 
@@ -86,6 +87,13 @@ export default new Router({
           icon: 'ios-grid',
           label: 'webExcel',
           component: luckyexcel
+        },
+        {
+          path: 'jspreadsheetCE',
+          name: 'jspreadsheetCE',
+          icon: 'ios-grid',
+          label: 'jspreadsheetCE',
+          component: jspreadsheetCE
         },
       ]
     },

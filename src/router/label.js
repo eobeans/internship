@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-20 18:29:57
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-15 11:50:06
+ * @LastEditTime: 2021-08-15 17:15:33
  * @Version: 0.1.0
  * @Description: 
  */
@@ -60,6 +60,12 @@ const routes = [
         name: 'luckyexcel',
         icon: 'ios-grid',
         label: 'webExcel'
+      },
+      {
+        path: 'jspreadsheetCE',
+        name: 'jspreadsheetCE',
+        icon: 'ios-grid',
+        label: 'jspreadsheetCE'
       },
     ]
   },
