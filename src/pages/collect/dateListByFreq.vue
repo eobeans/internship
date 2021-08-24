@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-08-14 11:05:04
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-15 02:15:41
+ * @LastEditTime: 2021-08-16 09:00:52
  * @Version: 0.1.0
  * @Description: 根据起止时间和事件频率生成日期列表
 -->
@@ -93,8 +93,8 @@ export default {
         if (startFreqMDate === this.endDate) {
           rptDatList.push(startFreqMDate)
         } else {
-          const forLength = durationFreqM > 30 ? 30 : durationFreqM
-          for(let i = 0; i < forLength; i++) {
+          const forLength = durationFreqM > 29 ? 29 : durationFreqM
+          for(let i = 0; i <= forLength; i++) {
             if (dayjs(startFreqMDate).isBefore(this.endDate)) {
               rptDatList.push(dayjs(startFreqMDate).add(i, 'M').format('YYYYMMDD'))
             }

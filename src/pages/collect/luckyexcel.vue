@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-08-15 11:48:50
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-15 16:58:13
+ * @LastEditTime: 2021-08-24 20:23:05
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -16,7 +16,6 @@
 </template>
 
 <script>
-// import LuckyExcel from 'luckyexcel'
 export default {
   name: 'luckyexcel',
   data(){
