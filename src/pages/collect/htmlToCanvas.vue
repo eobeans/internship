@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-07-31 14:18:34
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-11 21:19:46
+ * @LastEditTime: 2021-08-25 12:37:16
  * @Version: 0.1.0
  * @Description: 
 -->
@@ -16,18 +16,23 @@
     <el-button @click="downLoadPdf">下载PDF</el-button>
     <el-button @click="print">打印</el-button>
     <el-button @click="testPrint">打印(插件print-js)</el-button>
+    <el-button @click="handleAdd">新增</el-button>
+    <add-dialog :visible.sync="addDialogShow"></add-dialog>
 	</div>
 </template>
 <script>
 import html2canvas from 'html2canvas'
 import printHtml from "@/utils/print.js"
 import printJS from 'print-js'
+import AddDialog from '../../components/dialog/AddDialog.vue'
 export default {
 	name: 'htmlToCanvas',
 	components: {
+    AddDialog
 	},
 	data(){
 		return{
+      addDialogShow: false
 		}
 	},
 	mounted(){},
@@ -95,6 +100,9 @@ export default {
         documentTitle: 'htmlToCanvas-print-js'
       }
       printJS(opt)
+    },
+    handleAdd() {
+      this.addDialogShow = true
     }
 	}
 }
