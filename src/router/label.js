@@ -3,7 +3,7 @@
  * @Date: 2021-06-20 18:29:57
  * @LastEditors: eobeans
 <<<<<<< HEAD
- * @LastEditTime: 2021-08-11 21:43:45
+ * @LastEditTime: 2021-09-25 19:45:25
 =======
  * @LastEditTime: 2021-08-15 17:15:33
 >>>>>>> develop
@@ -70,6 +70,12 @@ const routes = [
         name: 'jspreadsheetCE',
         icon: 'ios-grid',
         label: 'jspreadsheetCE'
+      },
+      {
+        path: 'floatBall',
+        name: 'floatBall',
+        icon: 'ios-grid',
+        label: 'floatBall'
       },
     ]
   },

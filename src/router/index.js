@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-05-27 22:42:25
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-15 17:15:28
+ * @LastEditTime: 2021-09-25 19:45:03
  * @Version: 0.1.0
  * @Description: 
  */
@@ -94,6 +94,13 @@ export default new Router({
           icon: 'ios-grid',
           label: 'jspreadsheetCE',
           component: jspreadsheetCE
+        },
+        {
+          path: 'floatBall',
+          name: 'floatBall',
+          icon: 'ios-grid',
+          label: 'floatBall',
+          component: () => import('@/pages/collect/floatBall')
         },
       ]
     },
