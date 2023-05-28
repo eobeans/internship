@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-09-05 00:44:15
  * @LastEditors: eobeans
- * @LastEditTime: 2021-09-05 13:04:33
+ * @LastEditTime: 2021-09-05 21:59:08
  * @Version: 0.1.0
  * @Description: 处理对象数组数据，化为echart可识别的数据格式
  */
@@ -35,8 +35,10 @@ function convertLineData(dataAsset = {realData: [], scheData: [], lastData: [], 
   const rptDateNameList = createDateNameList(rptDateList, params.frq) // 假处理
   const noCrossYera = rptDateList.length === 1
     ? true
-    : rptDateList[0].substring(0, 4) === rptDateList[rptDateList.length].substring(0, 4)
-  const source = [['product']]
+    : rptDateList[0].substring(0, 4) === rptDateList[rptDateList.length - 1].substring(0, 4)
+  const year = _.toString(rptDateList[0].substring(0, 4))
+  const lastYear = _.toString(_.toNumber(year) - 1)
+  const source = [['product'], [lastYear], [year], ['ScheDule']]
   if(noCrossYera) {
     rptDateNameList.map((name, i) => {
       source[0].push(name)
@@ -66,6 +68,10 @@ function convertLineData(dataAsset = {realData: [], scheData: [], lastData: [], 
       }
     })
     // 组装数据
+    const newData = {
+      lineSource: source
+    }
+    return newData
   }
 }
 

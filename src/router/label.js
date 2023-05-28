@@ -2,7 +2,11 @@
  * @Autor: eobeans
  * @Date: 2021-06-20 18:29:57
  * @LastEditors: eobeans
- * @LastEditTime: 2021-11-17 09:01:55
+<<<<<<< HEAD
+ * @LastEditTime: 2021-09-25 19:45:25
+=======
+ * @LastEditTime: 2021-08-15 17:15:33
+>>>>>>> develop
  * @Version: 0.1.0
  * @Description: 
  */
@@ -72,6 +76,12 @@ const routes = [
         name: 'questionnaire',
         icon: 'ios-grid',
         label: 'questionnaire'
+      },
+      {
+        path: 'floatBall',
+        name: 'floatBall',
+        icon: 'ios-grid',
+        label: 'floatBall'
       },
     ]
   },

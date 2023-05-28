@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-08-14 11:05:04
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-16 09:00:52
+ * @LastEditTime: 2021-09-05 21:13:06
  * @Version: 0.1.0
  * @Description: 根据起止时间和事件频率生成日期列表
 -->
@@ -27,6 +27,7 @@
           </el-select>
         </el-form-item>
         <el-button @click="handleClick">确定</el-button>
+        <el-button @click="handleClick1">convertLineData</el-button>
       </el-form>
     </div>
   </div>
@@ -42,6 +43,7 @@ const isSameOrBefore = require('dayjs/plugin/isSameOrBefore')
 dayjs.extend(isSameOrBefore)
 const today = dayjs().format('YYYYMMDD')
 const startOfYear = dayjs().startOf('year').format('YYYYMMDD')
+import convertFunc from '@/utils/convertData.js'
 export default {
   name: 'dateListByFreq',
   data() {
@@ -74,6 +76,10 @@ export default {
     }
   },
   methods: {
+    handleClick1() {
+      const data = convertFunc.convertLineData()
+      console.log('convertLineData', data)
+    },
     handleClick() {
       console.log(this.startDate, this.endDate, this.selectFreq)
       let rptDatList = []
