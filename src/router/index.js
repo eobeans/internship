@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-05-27 22:42:25
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-15 17:15:28
+ * @LastEditTime: 2021-11-17 09:03:15
  * @Version: 0.1.0
  * @Description: 
  */
@@ -20,6 +20,7 @@ import htmlToCanvas from '@/pages/collect/htmlToCanvas'
 import dateListByFreq from '@/pages/collect/dateListByFreq'
 import luckyexcel from '@/pages/collect/luckyexcel'
 import jspreadsheetCE from '@/pages/collect/jspreadsheetCE'
+import questionnaire from '@/pages/collect/questionnaire'
 
 Vue.use(Router)
 
@@ -94,6 +95,13 @@ export default new Router({
           icon: 'ios-grid',
           label: 'jspreadsheetCE',
           component: jspreadsheetCE
+        },
+        {
+          path: 'questionnaire',
+          name: 'questionnaire',
+          icon: 'ios-grid',
+          label: 'questionnaire',
+          component: questionnaire
         },
       ]
     },

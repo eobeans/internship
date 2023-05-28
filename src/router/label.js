@@ -2,11 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-06-20 18:29:57
  * @LastEditors: eobeans
-<<<<<<< HEAD
- * @LastEditTime: 2021-08-11 21:43:45
-=======
- * @LastEditTime: 2021-08-15 17:15:33
->>>>>>> develop
+ * @LastEditTime: 2021-11-17 09:01:55
  * @Version: 0.1.0
  * @Description: 
  */
@@ -70,6 +66,12 @@ const routes = [
         name: 'jspreadsheetCE',
         icon: 'ios-grid',
         label: 'jspreadsheetCE'
+      },
+      {
+        path: 'questionnaire',
+        name: 'questionnaire',
+        icon: 'ios-grid',
+        label: 'questionnaire'
       },
     ]
   },
