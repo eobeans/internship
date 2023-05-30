@@ -2,7 +2,7 @@
  * @Autor: eobeans
  * @Date: 2021-05-27 22:42:25
  * @LastEditors: eobeans
- * @LastEditTime: 2021-08-15 17:15:28
+ * @LastEditTime: 2023-05-30 21:29:34
  * @Version: 0.1.0
  * @Description: 
  */
@@ -21,6 +21,7 @@ import dateListByFreq from '@/pages/collect/dateListByFreq'
 import luckyexcel from '@/pages/collect/luckyexcel'
 import jspreadsheetCE from '@/pages/collect/jspreadsheetCE'
 import questionnaire from '@/pages/collect/questionnaire'
+import newLogin from '@/pages/collect/newLogin'
 
 Vue.use(Router)
 
@@ -106,7 +107,7 @@ export default new Router({
         {
           path: 'questionnaire',
           name: 'questionnaire',
-          icon: 'ios-grid',
+          icon: 'ios-navigate',
           label: 'questionnaire',
           component: questionnaire
         },
@@ -126,5 +127,12 @@ export default new Router({
       label: '注册',
       component: register
     },
+    {
+      path: '/newLogin',
+      name: 'newLogin',
+      icon: 'ios-navigate',
+      label: '新首页',
+      component: newLogin
+    }
   ]
 })
