@@ -7,10 +7,11 @@
  * @Description: 
 -->
 <template>
-  <div class="hello">
+  <div class="lucky-contain">
     <div
       id="luckysheet"
-      style="margin:0px;padding:0px;position:absolute;width: calc(100% - 300px);left: 300px;top: 30px;bottom:0px;"
+      class="sheet-contain"
+      style=""
     ></div>
   </div>
 </template>
@@ -110,5 +111,14 @@ li {
 }
 a {
   color: #42b983;
+}
+.lucky-contain {
+  width: 100%;
+  height: calc(100vh - 64px);
+}
+.sheet-contain {
+  /* margin:0px;padding:0px;position:absolute;width: calc(100% - 208px);left: 208px;top: 64px;bottom:0px; */
+  width: 100%;
+  height: 100%;
 }
 </style>
