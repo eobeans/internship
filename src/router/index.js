@@ -2,99 +2,137 @@
  * @Autor: eobeans
  * @Date: 2021-05-27 22:42:25
  * @LastEditors: eobeans
- * @LastEditTime: 2021-06-03 14:30:35
+ * @LastEditTime: 2023-05-30 21:29:34
  * @Version: 0.1.0
  * @Description: 
  */
 import Vue from 'vue'
 import Router from 'vue-router'
-import iview from 'iview'
-import 'iview/dist/styles/iview.css'
 import layout from '@/layout/layout'
 import login from '@/pages/login'
 import register from '@/pages/register'
 import attendence from '@/pages/attendence'
-import student from '@/pages/student'
-import dailyrecord from '@/pages/dailyrecord'
-import totation from '@/pages/totation'
-import grade from '@/pages/grade'
-import disease from '@/pages/disease'
-import diseaserecord from '@/pages/diseaserecord'
-import operation from '@/pages/operation'
-import doctor from '@/pages/doctor'
-import teacher from '@/pages/teacher'
 import mytest from '@/pages/mytest'
+import editTable from '@/pages/editTable'
+import simpleEditTable from '@/pages/simpleEditTable'
+import zoumadeng from '@/pages/collect/zoumadeng'
+import htmlToCanvas from '@/pages/collect/htmlToCanvas'
+import dateListByFreq from '@/pages/collect/dateListByFreq'
+import luckyexcel from '@/pages/collect/luckyexcel'
+import jspreadsheetCE from '@/pages/collect/jspreadsheetCE'
+import questionnaire from '@/pages/collect/questionnaire'
+import newLogin from '@/pages/collect/newLogin'
+
 Vue.use(Router)
-Vue.use(iview)
 
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'layout',
+      icon: 'ios-navigate',
+      label: '首页',
       component: layout,
       children: [
         {
           path:'attendence',
           name:'attendence',
+          icon: 'ios-navigate',
+          label: '考勤总览',
           component:attendence
-        },
-        {
-          path:'student',
-          name:'student',
-          component:student,
-        },
-        {
-          path:'dailyrecord',
-          name:'dailyrecord',
-          component:dailyrecord,
-        },
-        {
-          path:'totation',
-          name:'totation',
-          component:totation,
-        },
-        {
-          path: 'grade',
-          name: 'grade',
-          component: grade
-        },
-        {
-          path:'operation',
-          name:'operation',
-          component:operation
-        },
-        {
-          path:'disease',
-          name:'disease',
-          component:disease,
-        },
-        {
-          path:'diseaserecord',
-          name:'diseaserecord',
-          component:diseaserecord,
-        },
-        {
-          path: 'doctor',
-          name: 'doctor',
-          component: doctor
-        },
-        {
-          path: 'teacher',
-          name: 'teacher',
-          component: teacher
         },
         {
           path: 'mytest',
           name: 'mytest',
+          icon: 'md-snow',
+          label: '我的测试',
           component: mytest
+        },
+        {
+          path: 'editTable',
+          name: 'editTable',
+          icon: 'ios-list-box',
+          label: '可编辑表格',
+          component: editTable
+        },
+        {
+          path: 'simpleEditTable',
+          name: 'simpleEditTable',
+          icon: 'ios-grid',
+          label: '简易可编辑表格',
+          component: simpleEditTable
+        },
+        {
+          path: 'wyyzmd',
+          name: 'wyyzmd',
+          icon: 'ios-grid',
+          label: '走马灯',
+          component: zoumadeng
+        },
+        {
+          path: 'htmlToCanvas',
+          name: 'htmlToCanvas',
+          icon: 'el-icon-s-unfold',
+          label: 'html转Canvas',
+          component: htmlToCanvas
+        },
+        {
+          path: 'dateListByFreq',
+          name: 'dateListByFreq',
+          icon: 'ios-grid',
+          label: '生成日期列表',
+          component: dateListByFreq
+        },
+        {
+          path: 'luckyexcel',
+          name: 'luckyexcel',
+          icon: 'ios-grid',
+          label: 'webExcel',
+          component: luckyexcel
+        },
+        {
+          path: 'jspreadsheetCE',
+          name: 'jspreadsheetCE',
+          icon: 'ios-grid',
+          label: 'jspreadsheetCE',
+          component: jspreadsheetCE
+        },
+        {
+          path: 'floatBall',
+          name: 'floatBall',
+          icon: 'ios-grid',
+          label: 'floatBall',
+          component: () => import('@/pages/collect/floatBall')
+        },
+        {
+          path: 'questionnaire',
+          name: 'questionnaire',
+          icon: 'ios-navigate',
+          label: 'questionnaire',
+          component: questionnaire
         },
       ]
     },
     {
       path: '/login',
       name: 'login',
+      icon: 'ios-navigate',
+      label: '登入',
       component: login
     },
+    {
+      path: '/register',
+      name: 'register',
+      icon: 'ios-navigate',
+      label: '注册',
+      component: register
+    },
+    {
+      path: '/newLogin',
+      name: 'newLogin',
+      icon: 'ios-navigate',
+      label: '新首页',
+      component: newLogin
+    }
   ]
 })

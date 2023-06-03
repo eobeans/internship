@@ -1,3 +1,11 @@
+/*
+ * @Autor: eobeans
+ * @Date: 2021-05-27 22:42:25
+ * @LastEditors: eobeans
+ * @LastEditTime: 2021-09-25 19:53:33
+ * @Version: 0.1.0
+ * @Description: 
+ */
 'use strict'
 const utils = require('./utils')
 const webpack = require('webpack')
@@ -82,7 +90,7 @@ module.exports = new Promise((resolve, reject) => {
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
-          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
+          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}/#/`], // 没在vue-config设置代理，暂且如此
         },
         onErrors: config.dev.notifyOnErrors
         ? utils.createNotifierCallback()
