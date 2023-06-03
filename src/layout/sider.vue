@@ -27,7 +27,7 @@ export default {
 		console.log('myRoutes', myRoutes)
 		return (
 			<el-aside width="208px">
-				<el-menu on-select={_this.selectNav} default-openeds="">
+				<el-menu on-select={_this.selectNav} default-openeds="" class="sider-menu">
 					{
 						myRoutes.map((route) => {
 							if (route.children&&route.children.length > 0) {
@@ -85,3 +85,9 @@ export default {
 	}
 }
 </script>
+<style lang="scss">
+.sider-menu {
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+</style>
