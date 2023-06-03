@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <Layout>
+        <div>
             <!-- <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" :style="{background: '#fff'}">
                 <Menu active-name="1-6" theme="light" width="auto" :style="{ minHeight: minHeight + 'px'}">
                     <MenuItem name="1-1" @click.native="selectNav(1)">
@@ -45,9 +45,9 @@
                     </MenuItem>
                 </Menu>
             </Sider> -->
-            <Layout>
-                <Layout :style="{padding: '0 12px 12px'}">
-                    <Content :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
+            <div>
+                <div :style="{padding: '0 12px 12px'}">
+                    <div :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
                         <Table border size="small" :columns="columns" :data="data">
                             <template slot-scope="{ row, index }" slot="action">
                                 <div>
@@ -85,10 +85,10 @@
                             @on-cancel="cancel">
                             <Table border size="small" :columns="columns3" :data="activity"></Table>
                         </Modal>
-                    </Content>
-                </Layout>
-            </Layout>
-        </Layout>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>

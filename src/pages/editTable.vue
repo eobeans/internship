@@ -8,8 +8,8 @@
 -->
 <template>
 	<div id="myEditTable" class="layout">
-		<Layout :style="{padding: '0 12px 12px'}">
-			<Content id="editTable" :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
+		<div :style="{padding: '0 12px 12px'}">
+			<div id="editTable" :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
 				<e-table
 					ref="table"
 					:pagination="{total:100}"
@@ -42,8 +42,8 @@
 						<div class="empty">custom empty !</div>
 					</template>
 				</e-table>
-			</Content>
-		</Layout>
+			</div>
+		</div>
 	</div>
 </template>
 <script>

@@ -27,7 +27,7 @@ export default {
 		console.log('myRoutes', myRoutes)
 		return (
 			<el-aside width="208px">
-				<el-menu on-select={_this.selectNav} default-openeds="" class="sider-menu">
+				<el-menu on-select={_this.selectNav} class="sider-menu">
 					{
 						myRoutes.map((route) => {
 							if (route.children&&route.children.length > 0) {

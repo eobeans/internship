@@ -1,9 +1,9 @@
 <template>
     <div class="layout">
-        <Layout>
-            <Layout>
-                <Layout :style="{padding: '0 12px 12px'}">
-                    <Content :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
+        <div>
+            <div>
+                <div :style="{padding: '0 12px 12px'}">
+                    <div :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
                         <row justify="start">
                             <Col span="3" offset="18">
                                 <Button type="primary" @click="myadd">新建临床操作信息</Button>
@@ -85,10 +85,10 @@
                                 </Col>
                             </Row>
                         </Modal>
-                    </Content>
-                </Layout>
-            </Layout>
-        </Layout>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>

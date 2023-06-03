@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <Layout>
+        <div>
             <!-- <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" :style="{background: '#fff'}">
                 <Menu active-name="1-9" theme="light" width="auto" :style="{ minHeight: minHeight + 'px'}">
                     <MenuItem name="1-1" @click.native="selectNav(1)">
@@ -45,9 +45,9 @@
                     </MenuItem>
                 </Menu>
             </Sider> -->
-            <Layout>
-                <Layout :style="{padding: '0 12px 12px'}">
-                    <Content :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
+            <div>
+                <div :style="{padding: '0 12px 12px'}">
+                    <div :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
                         <row justify="start">
                             <Col span="3" offset="18">
                                 <Button type="primary" @click.native.prevent="handleAdd">新建医院账号信息</Button>
@@ -212,10 +212,10 @@
                                 </Col>
                             </Row>
                         </Modal>
-                    </Content>
-                </Layout>
-            </Layout>
-        </Layout>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>

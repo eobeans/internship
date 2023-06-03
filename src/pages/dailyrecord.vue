@@ -1,53 +1,9 @@
 <template>
     <div class="layout">
-        <Layout>
-            <!-- <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" :style="{background: '#fff'}">
-                <Menu active-name="1-3" theme="light" width="auto" :style="{ minHeight: minHeight + 'px'}">
-                    <MenuItem name="1-1" @click.native="selectNav(1)">
-                        <Icon type="ios-navigate"></Icon>
-                        <span>考勤总览</span>
-                    </MenuItem>
-                    <MenuItem name="1-2" @click.native="selectNav(2)">
-                        <Icon type="ios-man" />
-                        <span>学生信息</span>
-                    </MenuItem>
-                    <MenuItem name="1-3" @click.native="selectNav(3)">
-                        <Icon type="ios-paper" />
-                        <span>每日实习情况</span>
-                    </MenuItem>
-                    <MenuItem name="1-4" @click.native="selectNav(4)">
-                        <Icon type="ios-loading" />
-                        <span>轮转科室情况</span>
-                    </MenuItem>
-                    <MenuItem name="1-5" @click.native="selectNav(5)">
-                        <Icon type="ios-flag" />
-                        <span>成绩考核记录</span>
-                    </MenuItem>
-                    <MenuItem name="1-6" @click.native="selectNav(6)">
-                        <Icon type="ios-create" />
-                        <span>诊断、操作记录</span>
-                    </MenuItem>
-                    <MenuItem name="1-7" @click.native="selectNav(7)">
-                        <Icon type="ios-pulse" />
-                        <span>病种记录表</span>
-                    </MenuItem>
-                    <MenuItem name="1-8" @click.native="selectNav(8)">
-                        <Icon type="ios-copy" />
-                        <span>操作记录表</span>
-                    </MenuItem>
-                    <MenuItem name="1-9" @click.native="selectNav(9)">
-                        <Icon type="ios-analytics" />
-                        <span>医院账号管理</span>
-                    </MenuItem>
-                    <MenuItem name="1-10" @click.native="selectNav(10)">
-                        <Icon type="ios-school" />
-                        <span>学校教师账号管理</span>
-                    </MenuItem>
-                </Menu>
-            </Sider> -->
-            <Layout>
-                <Layout :style="{padding: '0 12px 12px'}">
-                    <Content :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
+        <div>
+            <div>
+                <div :style="{padding: '0 12px 12px'}">
+                    <div :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
                         <row justify="start">
                             <Col span="3" offset="18">
                                 <Button type="primary" @click.native.prevent="handleAdd">新建每日实习情况</Button>
@@ -351,10 +307,10 @@
                                 </Col>
                             </Row>
                         </Modal>
-                    </Content>
-                </Layout>
-            </Layout>
-        </Layout>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>

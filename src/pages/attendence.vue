@@ -5,19 +5,19 @@
     </div>
     <div>
       <el-row justify="start" style="height:66px;margin-top:24px;">
-        <el-col span="3" offset="3"><p>病假：{{attendance[0].value}}天</p></el-col>
-        <el-col span="3"><p>事假：{{attendance[1].value}}天</p></el-col>
-        <el-col span="3"><p>旷课：{{attendance[2].value}}天</p></el-col>
-        <el-col span="3"><p>迟到：{{attendance[3].value}}次</p></el-col>
-        <el-col span="3"><p>早退：{{attendance[3].value}}次</p></el-col>
-        <el-col span="3"><p>按时：{{attendance[5].value}}次</p></el-col>
+        <el-col :span="3" :offset="3"><p>病假：{{attendance[0].value}}天</p></el-col>
+        <el-col :span="3"><p>事假：{{attendance[1].value}}天</p></el-col>
+        <el-col :span="3"><p>旷课：{{attendance[2].value}}天</p></el-col>
+        <el-col :span="3"><p>迟到：{{attendance[3].value}}次</p></el-col>
+        <el-col :span="3"><p>早退：{{attendance[3].value}}次</p></el-col>
+        <el-col :span="3"><p>按时：{{attendance[5].value}}次</p></el-col>
       </el-row>
     </div>
     <div>
       <el-row justify="start" style="margin-bottom:24px;">
-        <el-col span="4"  offset="6">教师检查次数：{{check}}次</el-col>
-        <el-col span="3">检查率：{{checkRate}}%</el-col>
-        <el-col span="3"><Button type="primary" style="margin-top:-10px;" @click.native.prevent="refreshData">刷新</Button></el-col>
+        <el-col :span="4"  :offset="6">教师检查次数：{{check}}次</el-col>
+        <el-col :span="3">检查率：{{checkRate}}%</el-col>
+        <el-col :span="3"><Button type="primary" style="margin-top:-10px;" @click.native.prevent="refreshData">刷新</Button></el-col>
       </el-row>
     </div>
     <div>

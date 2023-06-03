@@ -8,8 +8,8 @@
 -->
 <template>
 	<div class="layout">
-		<Layout :style="{padding: '0 12px 12px'}">
-			<Content :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
+		<div :style="{padding: '0 12px 12px'}">
+			<div :style="{padding: '12px', minHeight: '280px', background: '#fff' , margin:'24px'}">
 				<div style="height:400px">
 						<dev-line-chart
 							ref="zzqxtChart"
@@ -22,8 +22,8 @@
 						>
 						</dev-line-chart>
 				</div>
-			</Content>
-		</Layout>
+			</div>
+		</div>
 	</div>
 </template>
 <script>

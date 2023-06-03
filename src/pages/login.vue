@@ -2,8 +2,8 @@
     <div>
         <div class="layout">
 					<MyHeader></MyHeader>
-					<Layout>
-							<Content :style="{padding: '0 50px'}">
+					<div>
+							<div :style="{padding: '0 50px'}">
 									<Card>
 											<div style="min-height: 496px;">
 													<form style="margin-top:160px;" @keyup.enter="handleLogin">
@@ -52,8 +52,8 @@
 													</Modal>
 											</div>
 									</Card>
-							</Content>
-					</Layout>
+							</div>
+					</div>
 					<MyFooter></MyFooter>
         </div>
     </div>

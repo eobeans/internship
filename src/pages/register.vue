@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="layout">
-            <Layout>
-                <Content :style="{padding: '0 50px'}">
+            <div>
+                <div :style="{padding: '0 50px'}">
                     <Card shadow >
                         <Row style="min-height:480px;">
                             <Col span="8" offset="8">
@@ -52,9 +52,9 @@
                             </Col>
                         </Row>
                     </Card>
-                </Content>
+                </div>
                 <!-- <Footer class="layout-footer-center">2018--2018 &copy; 数据库综合实验&nbsp;&nbsp;&nbsp;&nbsp;马勇杰&nbsp;&nbsp;李泽臣&nbsp;&nbsp;徐卓</Footer> -->
-            </Layout>
+            </div>
         </div>
     </div>
 </template>
